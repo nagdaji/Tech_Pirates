@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add-Entry</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"></script>
+  <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
+  <script src="https://kit.fontawesome.com/e018de74d3.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="all_connect.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Montserrat:wght@100&family=Roboto:wght@300&family=Sacramento&display=swap"
+    rel="stylesheet">
+  <script src="https://kit.fontawesome.com/38fc30680a.js" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+    crossorigin="anonymous"></script>
+
+
+  <!-- ======datatable==== -->
+
+  <link rel="stylesheet" href="//cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+  <script src="//cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+  <script>
+
+    $(document).ready(function () {
+      $('#mytable').DataTable();
+    });
+
+   
+  </script>
+  <style>
+    .form-entry {
+      margin-left: 5%;
+      margin-right: 5%;
+      display: flex;
+      gap: 120px;
+    }
+
+    .add-card {
+
+      padding: 2%;
+      border-radius: 20px;
+      margin: 10%;
+      margin-left: 24%;
+      background-color: white;
+      height: 400px;
+      width: 650px;
+      border: 2px;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="main-win">
+    <div class="navbar">
+      <h2 class="text-heading">Welcome to xLedger<br><span id="name">
+          <h5>Jatin</h5>
+        </span>
+      </h2>
+
+    </div>
+    <div class="contain">
+      <div class="left-column sidebar">
+        <ul>
+          <li><a href="/home" class="first-block"><img src="home-button (1).png" alt="" height="35px"
+                width="35px">Home</a></li>
+          <li><a href="/" id="hovering"><img src="add.png" alt="" height="35px" width="35px">Add Entry</a></li>
+          <li><a href="/spending"><img src="earnings.png" alt="" height="35px" width="35px">My Expenses</a></li>
+          <li><a href="/group"><img src="multiple-users-silhouette.png" alt="" height="35px" width="35px">Groups</a>
+          </li>
+          <li><a href="/e-cuurency"><img src="bit-coin.png" alt="" height="35px" width="35px">E-Currency</a></li>
+          <li><a href="/stocks"><img src="line-chart.png" alt="" height="35px" width="35px">Stocks</a></li>
+          <li><a href="/exchange"><img src="exchange.png" alt="" height="35px" width="35px">Currency</a></li>
+          <li><a href="/report"><img src="report.png" alt="" height="35px" width="35px">Report</a></li>
+          <li><a href="/contact"><img src="support.png" alt="" height="35px" width="35px"></i>Contact Us</a></li>
+          <li><a href="#"><img src="power.png" alt="" height="35px" width="35px"></i>Logout</a></li>
+          <!-- <li><a href="#"><i class="far fa-envelope"></i>Contact</a></li> -->
+        </ul>
+      </div>
+      <div class="right-column container">
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <div class="add-card">
+          <form class="row g-3">
+            <div class="col-md-6">
+              <label for="date" class="form-label">Date</label>
+              <input type="date" class="form-control" id="date">
+            </div>
+            <div class="col-md-6">
+              <label for="Category" class="form-label">Category</label>
+              <!-- <input type="Category" class="form-control" id="inputPassword4"> -->
+              <select id="Category" class="form-select">
+                <option selected>Choose...</option>
+                <option>Food</option>
+                <option>Travel</option>
+                <option>Shopping</option>
+                <option>Investment</option>
+                <option>Crypto Currency</option>
+                <option>Gold</option>
+                <option>Silver</option>
+                <option>Stocks</option>
+                <option>Misellenous</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label for="remarks" class="form-label">Remarks</label>
+              <input type="text" class="form-control" id="remarks">
+            </div>
+           
+            <div class="col-md-6">
+              <label for="amount" class="form-label">Amount</label>
+              <input type="text" class="form-control" id="amount">
+            </div>
+            <div class="col-md-6">
+            
+              <label for="group" class="form-label">Group</label><br>
+              <input type="radio" id="yes" name="group" value="yes" onclick="activate()">
+             <label for="yes">Yes</label>
+              <input type="radio" id="no" name="group" value="no" onclick="activate1()">
+             <label for="no">No</label>
+            
+             
+
+          </div>
+           
+            <div class="col-md-6">
+              <label for="grp" class="form-label">No. of Member</label>
+              <input type="number" class="form-control" id="grp-mem" disabled>
+            </div>
+            
+            <div class="col-md-6">
+              <label for="mode" class="form-label">Mode</label><br>
+                <input type="radio" id="online" name="mode" value="online">
+                 <label for="online">Online</label>
+                <input type="radio" id="offline" name="mode" value="offline">
+                <label for="offline">offline</label><br>
+
+            </div>
+
+
+
+            <div class="col-md-6 my-5 " >
+              <button type="submit" class="btn btn-primary " style="width: 55%;">Add Entry</button>
+            </div>
+          </form>
+
+
+        </div>
+      </div>
+
+    </div>
+    <script>
+      function activate(){
+        document.getElementById("grp-mem").disabled=false;
+    }
+    function activate1(){
+        document.getElementById("grp-mem").disabled=true;
+    }
+
+    </script>
+
+</body>
+
+</html>
