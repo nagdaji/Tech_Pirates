@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add-Entry</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"></script>
+  <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
+  <script src="https://kit.fontawesome.com/e018de74d3.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/CSS/all_connect.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Montserrat:wght@100&family=Roboto:wght@300&family=Sacramento&display=swap"
+    rel="stylesheet">
+  <script src="https://kit.fontawesome.com/38fc30680a.js" crossorigin="anonymous"></script>
+ 
+   
+  </script>
+  <style>
+    .form-entry {
+      margin-left: 5%;
+      margin-right: 5%;
+      display: flex;
+      gap: 120px;
+    }
+
+    .add-card {
+
+      padding: 2%;
+      border-radius: 20px;
+      margin: 10%;
+      margin-left: 24%;
+      background-color: white;
+      height: 400px;
+      width: 650px;
+      border: 2px;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="main-win">
+    <div class="navbar">
+      <h2 class="text-heading">Welcome to xLedger<br><span><h6 id = "username" >{{username}}</h6></span>
+            </h2>
+            <h3 id="useremail">user: <span id="pagemail">{{email}}</span></h3>
+
+    </div>
+    <div class="contain">
+      <div class="left-column sidebar">
+        <ul>
+          <li><a href="/" class="first-block"><img src="/images/home-button.png" alt="" height="35px"
+                width="35px">Home</a></li>
+          <li><a href="/add_entry" id="hovering"><img src="/images/add.png" alt="" height="35px" width="35px">Add Entry</a></li>
+          <li><a href="/spending"><img src="/images/earnings.png" alt="" height="35px" width="35px">My Expenses</a></li>
+          <li><a href="/group"><img src="/images/multiple-users-silhouette.png" alt="" height="35px" width="35px">Groups</a>
+          </li>
+          <li><a href="/Ecuurency"><img src="/images/bit-coin.png" alt="" height="35px" width="35px">E-Currency</a></li>
+          <li><a href="/stocks"><img src="/images/line-chart.png" alt="" height="35px" width="35px">Stocks</a></li>
+          <li><a href="/exchange"><img src="/images/exchange.png" alt="" height="35px" width="35px">Currency</a></li>
+          <li><a href="/report"><img src="/images/report.png" alt="" height="35px" width="35px">Report</a></li>
+          <li><a href="/contact"><img src="/images/support.png" alt="" height="35px" width="35px"></i>Contact Us</a></li>
+          <li><a href="/logout"><img src="/images/power.png" alt="" height="35px" width="35px"></i>Logout</a></li>
+          <!-- <li><a href="#"><i class="far fa-envelope"></i>Contact</a></li> -->
+        </ul>
+      </div>
+      <div class="right-column container">
+        <div class="alert alert-success alert-dismissible fade show" role="alert" id="success" style="display: none;">
+          <strong id="successmsg">Holy guacamole!</strong>
+          <a href="/add_entry">
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></a>
+        </div>
+        <div class="add-card" >
+          <form class="row g-3" onsubmit="return false;" id="form">
+            <div class="col-md-6">
+              <label for="date" class="form-label">Date</label>
+              <input type="date" class="form-control" id="date" required>
+            </div>
+            <div class="col-md-6">
+              <label for="Category" class="form-label">Category</label>
+              <!-- <input type="Category" class="form-control" id="inputPassword4"> -->
+              <select id="Category" class="form-select" required>
+                {{!-- <option></option> --}}
+                <option selected>Food</option>
+                <option>Travel</option>
+                <option>Shopping</option>
+                <option>Investment</option>
+                <option>Crypto Currency</option>
+                <option>Gold</option>
+                <option>Silver</option>
+                <option>Stocks</option>
+                <option>Misellenous</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label for="remarks" class="form-label">Remarks</label>
+              <input type="text" class="form-control" id="remarks" required>
+            </div>
+           
+            <div class="col-md-6">
+              <label for="amount" class="form-label">Amount ₹</label>
+              <input type="text" class="form-control" id="amount" required>
+            </div>
+            <div class="col-md-6">
+              <label for="group" class="form-label">Group (if you spent money in contribution ? )</label><br>
+              <select id="isgroup" class="form-select" onchange="activate()" required>
+                {{!-- <option selected>Choose...</option> --}}
+                <option>YES</option>
+                <option selected>NO</option>
+              </select>
+
+          </div>
+           
+            <div class="col-md-6">
+              <label for="grp" class="form-label">No. of Member</label>
+              <input type="number" class="form-control" id="grp-mem" disabled required>
+            </div>
+            
+            <div class="col-md-6">
+              <label for="mode" class="form-label">Mode</label><br>
+                
+                <select id="paymode" class="form-select" required>
+                {{!-- <option selected>Choose...</option   --}}
+                <option selected>Online</option>
+                <option >Cash</option>
+              </select>
+            </div>
+            <div class="col-md-6 my-5 " >
+              <button type="submit" class="btn btn-primary " style="width: 55%;">Add Entry</button>
+            </div>
+          </form>
+
+
+        </div>
+      </div>
+
+    </div>
+    <script>
+      function activate(){
+        if(document.getElementById("isgroup").value=="YES"){
+              document.getElementById("grp-mem").disabled=false;
+        }else{
+            document.getElementById("grp-mem").disabled=true;
+        }
+    }
+    
+    </script>
+      <script src="Javascript/add_entry.js"></script>
+</body>
+
+</html>

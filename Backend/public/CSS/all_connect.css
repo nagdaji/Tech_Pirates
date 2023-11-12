@@ -1,0 +1,135 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  /* font-family: 'Montserrat', sans-serif; */
+  display: flex;
+  height: 100%;
+  align-items: center;
+  text-align: center;
+  background-color: #003366;
+  margin: 0;
+  overflow: hidden;
+}
+#username {
+  font-size: 80%;
+}
+#useremail {
+  font-size: 110%;
+  margin-right: 2%;
+  color: white;
+}
+.text-heading {
+  margin-left: 30px;
+  text-align: left;
+  color: white;
+}
+.user {
+  margin-left: 30px;
+  text-align: left;
+  color: white;
+}
+.main-win {
+  width: 100%;
+  margin: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+.navbar {
+  background-color: #003366;
+  height: 60px;
+  width: 100%;
+  margin: 0;
+  position: fixed;
+  top: 0;
+}
+.contain {
+  background-color: white;
+  width: 100%;
+
+  margin-top: 80px;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+}
+.contain:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.left-column {
+  float: left;
+  justify-content: left;
+  /* background-color: rgb(236, 233, 233); */
+  background: white;
+  height: 100vh;
+  width: 15%;
+  border-top-left-radius: 40px;
+}
+.right-column {
+  /* font-size: 10px; */
+  font-weight: bold;
+  float: left;
+  background-color: rgb(236, 233, 233);
+  width: 85%;
+  height: 100vh;
+  border-top-right-radius: 40px;
+  overflow: scroll;
+  padding-bottom: 100px;
+}
+#hovering {
+  padding-left: 30px;
+  box-shadow: 3px 3px 3px gray;
+}
+.right-column::-webkit-scrollbar {
+  display: none;
+}
+
+li {
+  padding: 10px;
+  text-align: center;
+  align-items: center;
+  list-style: none;
+}
+ul {
+  text-align: center;
+  padding: 0;
+}
+.first-block {
+  margin-top: 10px;
+}
+#name {
+  top: 0;
+  font-size: 30px;
+}
+.sidebar ul a {
+  text-align: center;
+  text-decoration: none;
+  float: left;
+  transition: all 0.5s ease;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  line-height: 50px;
+  font-size: 20px;
+  color: #255273;
+  padding-left: 10px;
+  box-sizing: border-box;
+  /* border-top: 1px solid rgba(255,255,255,.1); */
+  border-bottom: 1px solid#255273;
+  transition: 0.4s;
+  /* margin-left: 25px; */
+}
+ul li:hover a {
+  padding-left: 30px;
+  box-shadow: 3px 3px 3px gray;
+}
+.sidebar ul a img {
+  margin-right: 30px;
+  text-align: center;
+}
+img {
+  margin-top: 5px;
+  margin-left: 0px;
+}
