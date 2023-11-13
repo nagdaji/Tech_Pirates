@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>My Expences</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
@@ -24,22 +24,17 @@
     <script src="https://code.jquery.com/jquery-3.7.0.js"
         integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
 
-
     <!-- ======datatable==== -->
 
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
     <script src="//cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 
-    <script onload="changetable()">
-
-        $(document).ready(function () {
-            $('#mytable').DataTable();
-        });
-    </script>
-
 </head>
 
-<body >
+<body onload="getdata()">
+
+{{!-- ///////////////modal//////////////// --}}
+
     <div class="main-win">
         <div class="navbar">
             <h2 class="text-heading">Welcome to xLedger<br><span>
@@ -76,54 +71,162 @@
                 </ul>
             </div>
             <div class="right-column container ">
+                {{!-- modal---------- --}}
+
+
+          
+                <!-- Modal  edit-->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Do you want to edit </h5>
+                        <a href="/spending"><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div></a>
+                    <div class="modal-body">
+                                {{!-- ----------form----------- --}}
+
+                        <form class="row g-3" onsubmit="return false;" id="updateform">
+            <div class="col-md-6">
+              <label for="date" class="form-label">Date</label>
+              <input type="date" class="form-control" id="date" required>
+            </div>
+            <div class="col-md-6">
+              <label for="Category" class="form-label">Category</label>
+              <!-- <input type="Category" class="form-control" id="inputPassword4"> -->
+              <select id="Category" class="form-select" required>
+                {{!-- <option></option> --}}
+                <option selected>Food</option>
+                <option>Travel</option>
+                <option>Shopping</option>
+                <option>Investment</option>
+                <option>Crypto</option>
+                <option>Gold</option>
+                <option>Silver</option>
+                <option>Stocks</option>
+                <option>Miscellenous</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label for="remarks" class="form-label">Remarks</label>
+              <input type="text" class="form-control" id="remarks" required>
+            </div>
+           
+            <div class="col-md-6">
+              <label for="amount" class="form-label">Amount ₹</label>
+              <input type="text" class="form-control" id="amount" required>
+            </div>
+            <div class="col-md-6">
+              <label for="group" class="form-label">Split Amount</label><br>
+              <select id="isgroup" class="form-select" onchange="activate()" required>
+                {{!-- <option selected>Choose...</option> --}}
+                <option>YES</option>
+                <option selected>NO</option>
+              </select>
+          </div>
+
+           
+            <div class="col-md-6 " style="margin-top: 6px;">
+              <label for="grp" class="form-label">&nbsp;&nbsp;No. of Member</label>
+              <input type="number" class="form-control" id="grp-mem" disabled required>
+            </div>
+            
+            <div class="col-md-6">
+              <label for="amount" class="form-label">Transaction id</label>
+              <input type="text" class="form-control" id="tranid" required disabled>
+            </div>
+            
+            <div class="col-md-6">
+              <label for="mode" class="form-label">Mode</label><br>
+                
+                <select id="paymode" class="form-select" required>
+                {{!-- <option selected>Choose...</option   --}}
+                <option selected>Online</option>
+                <option >Cash</option>
+              </select>
+            </div>
+            <div class="col-md-6"  style="float: right;">
+              <button type="submit" class="btn btn-primary " style="width: 80%;" >update
+                Data
+              </button>
+            </div>
+                        {{!-- ----------form----------- --}}
+                        <br>
+             <div class="alert alert-success alert-dismissible fade show" role="alert" id="success" style="display: none;">
+          <strong id="successmsg">Holy guacamole!</strong>
+          <a href="/spending">
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></a>
+          </form>
+        </div>
+                  
+                </div>
+                </div>
+                
                 <div class="category">
                     <div>
                         <h1>Catgories</h1>
                     </div>
                     <div class="btn-padding">
-                        <button type="button" class="btn btn-color btn-outline-info mx-2">Food</button>
-                        <button type="button" class="btn btn-color btn-outline-info mx-2">Travel</button>
-                        <button type="button" class="btn btn-color btn-outline-info mx-2">Shopping</button>
-                        <button type="button" class="btn btn-color btn-outline-info mx-2">Investment</button>
-                        <button type="button" class="btn btn-color btn-outline-info mx-2">Crypto</button>
-                        <button type="button" class="btn btn-color btn-outline-info mx-2">Gold</button>
-                        <button type="button" class="btn btn-color btn-outline-info mx-2">Silver</button>
-                        <button type="button" class="btn btn-color btn-outline-info mx-2">Secondary</button>
-                        <button type="button" class="btn btn-color btn-outline-info mx-2">Secondary</button>
+                        <button type="button" class="btn btn-color mx-2" id="filter1" onclick="filter1()">Food</button>
+                        <button type="button" class="btn btn-color  mx-2" id="filter2" onclick="filter2()">Travel</button>
+                        <button type="button" class="btn btn-color mx-2" id="filter3" onclick="filter3()">Shopping</button>
+                        <button type="button" class="btn btn-color mx-2" id="filter4" onclick="filter4()">Investment</button>
+                        <button type="button" class="btn btn-color mx-2" id="filter5" onclick="filter5()">Crypto</button>
+                        <button type="button" class="btn btn-color mx-2" id="filter6" onclick="filter6()">Gold</button>
+                        <button type="button" class="btn btn-color mx-2" id="filter7" onclick="filter7()">Silver</button>
+                        <button type="button" class="btn btn-color mx-2" id="filter8" onclick="filter8()">Stocks</button>
+                        <button type="button" class="btn btn-color mx-2" id="filter9" onclick="filter9()">Miscellenous</button>
+                        <a href="/spending"><button type="button" class="btn btn-color mx-2" id="reset"> Remove Filter</button></a>
 
                     </div>
 
                 </div>
 
-                <table class="table" id="table" border="3px solid black">
-                    <thead border="3px solid black">
-                        <tr>
-                            <th scope="col" style="text-align: center;">S.no</th>
-                            <th scope="col" style="text-align: center;">Date</th>
-                            <th scope="col" style="text-align: center;">Category</th>
-                            <th scope="col" style="text-align: center;">Remarks</th>
-                            <th scope="col" style="text-align: center;">Mode of payment</th>
-                            <th scope="col" style="text-align: center;">Amonut</th>
-                            <th scope="col" style="text-align: center;">Edit</th>
+                <table class="table " id="mytable" border="3px solid black">
+                    <thead border="3px solid black" style="height: 51px;" >
+                        <tr >
+                            <th scope="col" style="text-align: center; background:rgb(0 51 102 / 93%); color:rgb(255, 255, 255);">S.no</th>
+                            <th scope="col" style="text-align: center;background:rgb(0 51 102 / 93%); color:rgb(255, 255, 255);" class="tablehead">Date</th>
+                            <th scope="col" style="text-align: center;background:rgb(0 51 102 / 93%); color:rgb(255, 255, 255);" class="tablehead">Category</th>
+                            <th scope="col" style="text-align: center;background:rgb(0 51 102 / 93%); color:rgb(255, 255, 255);" class="tablehead">Remarks</th>
+                            <th scope="col" style="text-align: center;background:rgb(0 51 102 / 93%); color:rgb(255, 255, 255);" class="tablehead">Mode of payment</th>
+                            <th scope="col" style="text-align: center;background:rgb(0 51 102 / 93%); color:rgb(255, 255, 255);" class="tablehead">Amonut</th>
+                            <th scope="col" style="text-align: center;background:rgb(0 51 102 / 93%); color:rgb(255, 255, 255);" class="tablehead">Edit</th>
                         </tr>
                     </thead>
-                    <tbody id="output">
-                        {{!-- <tr>
-                            <th scope="col" style="text-align: center;">S.no</th>
-                            <th scope="col" style="text-align: center;">Date</th>
-                            <th scope="col" style="text-align: center;">Category</th>
-                            <th scope="col" style="text-align: center;">Remarks</th>
-                            <th scope="col" style="text-align: center;">Mode of payment</th>
-                            <th scope="col" style="text-align: center;">Amonut</th>
-                            <th scope="col" style="text-align: center;">Edit</th>
-                        </tr> --}}
-                       </tbody>
+                    <tbody id="output"></tbody>
+                </table>
+                <table class="table table-primary" border="3px solid black" style="background-color: black;">
+                        <thead border="3px solid black;" style="height: 51px;font-size:larger">
+                        <tr border="3px solid black;">
+                            <th scope="col" style="text-align: center; background:rgb(0 51 102 / 93%); color:white">Grand Total </th>
+                            <th scope="col" style="text-align: center;background:rgb(0 51 102 / 93%); color:white"></th>
+                            <th scope="col" style="text-align: center;background:rgb(0 51 102 / 93%); color:white"></th>
+                            <th scope="col" style="text-align: center;background:rgb(0 51 102 / 93%); color:white"></th>
+                            <th scope="col" style="text-align: center;background:rgb(0 51 102 / 93%); color:white"></th>
+                            <th scope="col" style="text-align: center;background:rgb(0 51 102 / 93%); color:white"></th>
+                            <th scope="col" style="text-align: center;background:rgb(0 51 102 / 93%); color:white"></th>
+                            <th scope="col" style="text-align: center;background:rgb(0 51 102 / 93%); color:white">₹ <span id="grandtotal">0.0</span> </th>
+                            <th scope="col" style="text-align: center;background:rgb(0 51 102 / 93%); color:white"></th>
+                        </tr>
+                    </thead>
                 </table>
             </div>
         </div>
     </div>
-
+  
+    <script>
+      function activate(){
+        if(document.getElementById("isgroup").value=="YES"){
+              document.getElementById("grp-mem").disabled=false;
+        }else{
+            document.getElementById("grp-mem").disabled=true;
+        }
+    }
+    
+    </script>
     <script src="Javascript/spending.js"></script>
+    <script src="Javascript/editTransaction.js"></script>
 </body>
 
 </html>
