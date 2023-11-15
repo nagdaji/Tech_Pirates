@@ -92,7 +92,7 @@ body {
   /* margin-left: 10%; */
 }
 
-#table {
+#mttable {
   border: 3px solid black;
 }
 li {
@@ -153,14 +153,53 @@ img {
   margin-top: 5%;
   margin-bottom: 5%;
 }
+.btn {
+  border: 1px solid black;
+  /* color: black; */
+}
+.bth:hover {
+  color: white;
+}
 .btn-color {
-  /* background-color: #003366; */
-  color: black;
+  color: rgb(7, 7, 7);
+  font-weight: 500;
 }
 .btn-color:hover {
   color: white;
   background-color: #003366;
 }
+.btn-color:disabled {
+  color: black;
+  background-color: rgb(255, 255, 255);
+}
 .btn-padding {
   padding: 2%;
+}
+#output {
+  font-weight: 500;
+}
+.tablehead {
+  background-color: #000305;
+}
+.edit {
+  background-color: #ffffffc3;
+  color: black;
+  width: 40%;
+  font-size: medium;
+  font-weight: 400;
+}
+.delete {
+  font-size: medium;
+  font-weight: 400;
+  width: 40%;
+  color: black;
+  background-color: #ffffffc3;
+}
+.edit:hover {
+  background-color: #003366;
+  color: rgb(255, 255, 255);
+}
+.delete:hover {
+  color: rgb(255, 255, 255);
+  background-color: #003366;
 }

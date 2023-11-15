@@ -52,7 +52,7 @@ const register = async (req, res) => {
               if (err) throw err;
               const tablename = "transactionuser" + result[0].sno;
               // console.log(tablename);
-              const createtable = `CREATE TABLE xledger.${tablename} (date text NOT NULL , category TEXT NOT NULL , remark TEXT NOT NULL , mode TEXT NOT NULL , amount DOUBLE NOT NULL , isgroup TEXT NULL , groupmember INT NULL DEFAULT NULL ) ENGINE = InnoDB;
+              const createtable = `CREATE TABLE xledger.${tablename} (Tid DOUBLE NOT NULL AUTO_INCREMENT,date TEXT NOT NULL,currencyname text DEFAULT NULL,quantity text DEFAULT NULL , category TEXT NOT NULL , remark TEXT NOT NULL , mode TEXT NOT NULL , amount DOUBLE NOT NULL , isgroup TEXT NULL , groupmember INT NULL DEFAULT NULL ,  PRIMARY KEY (Tid));
               `;
               db.query(createtable, (err, result) => {
                 if (err) throw err;

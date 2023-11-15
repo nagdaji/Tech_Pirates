@@ -11,6 +11,7 @@ const add_entry = async (req, res) => {
   const grpmem = req.body.grpmem;
   const paymode = req.body.paymode;
   const email = req.body.email;
+
   if (isgroup == "YES") {
     var newamount = amount / grpmem;
     amount = newamount.toFixed(2);
@@ -21,9 +22,7 @@ const add_entry = async (req, res) => {
     if (err) throw err;
     const tablename = "transactionuser" + results[0].sno;
     const sqlinsert = `INSERT INTO ${tablename} (date, category, remark, mode, amount, isgroup, groupmember) VALUES ('${date}', '${Category}', '${remarks}', '${paymode}', '${amount}', '${isgroup}', '${grpmem}')`;
-    var values = [date, Category, remarks, paymode, amount, isgroup, grpmem];
-    // console.log(tablename);
-    db.query(sqlinsert, [values], (err, result) => {
+    db.query(sqlinsert, (err, result) => {
       if (err) throw err;
     });
     if (isgroup == "YES") {

@@ -75,6 +75,57 @@ router.get("/editTransaction", loggedin, (req, res) => {
     res.render("index");
   }
 });
+router.get("/crypto", loggedin, (req, res) => {
+  if (req.user) {
+    res.render("crypto", {
+      username: req.user.fullname,
+      email: req.user.email,
+    });
+  } else {
+    res.render("index");
+  }
+});
+
+router.get("/stocks", loggedin, (req, res) => {
+  if (req.user) {
+    res.render("stocks", {
+      username: req.user.fullname,
+      email: req.user.email,
+    });
+  } else {
+    res.render("index");
+  }
+});
+router.get("/jwellery", loggedin, (req, res) => {
+  if (req.user) {
+    res.render("jwellery", {
+      username: req.user.fullname,
+      email: req.user.email,
+    });
+  } else {
+    res.render("index");
+  }
+});
+router.get("/exchange", loggedin, (req, res) => {
+  if (req.user) {
+    res.render("exchange", {
+      username: req.user.fullname,
+      email: req.user.email,
+    });
+  } else {
+    res.render("index");
+  }
+});
+router.get("/report", loggedin, (req, res) => {
+  if (req.user) {
+    res.render("report", {
+      username: req.user.fullname,
+      email: req.user.email,
+    });
+  } else {
+    res.render("index");
+  }
+});
 
 router.get("/register", (req, res) => {
   res.render("register");

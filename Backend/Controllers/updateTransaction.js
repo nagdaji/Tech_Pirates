@@ -33,12 +33,12 @@ const updateTransaction = async (req, res) => {
     if (isgroup == "YES") {
       return res.json({
         status: "success",
-        message: `Data Saved Successfully , YOUR SHARE IN CONTRIBUTION IS ${amount} Rupees`,
+        message: `Data Updated Successfully , YOUR SHARE IN CONTRIBUTION IS ${amount} Rupees`,
       });
     }
     return res.json({
       status: "success",
-      message: `Data Saved Successfully `,
+      message: `Data Updated Successfully `,
     });
   });
 };
