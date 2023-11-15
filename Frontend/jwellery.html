@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stocks</title>
+    <title>Report</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
@@ -16,7 +16,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="all_connect.css">
-    <link rel="stylesheet" href="stocks.css">
+    <link rel="stylesheet" href="jwellery.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Montserrat:wght@100&family=Roboto:wght@300&family=Sacramento&display=swap"
         rel="stylesheet">
@@ -55,15 +55,17 @@
                     <li><a href="/spending"><img src="earnings.png" alt="" height="35px" width="35px">My Expenses</a></li>
                     <li><a href="/group"><img src="multiple-users-silhouette.png" alt="" height="35px" width="35px">Groups</a></li>
                     <li><a href="/e-cuurency"><img src="bit-coin.png" alt="" height="35px" width="35px">E-Currency</a></li>
-                    <li><a href="/" id="hovering"><img src="line-chart.png" alt="" height="35px" width="35px">Stocks</a></li>
+                    <li><a href="/stocks"><img src="line-chart.png" alt="" height="35px" width="35px">Stocks</a></li>
                     <li><a href="/exchange"><img src="exchange.png" alt="" height="35px" width="35px">Currency</a></li>
+                    <li><a href="/jwellery" id="hovering"><img src="diamond.png" alt="" height="35px" width="35px">Jwellery</a></li>
                     <li><a href="/report"><img src="report.png" alt="" height="35px" width="35px">Report</a></li>
                     <li><a href="/contact"><img src="support.png" alt="" height="35px" width="35px"></i>Contact Us</a></li>
-                    <li><a href="#"><img src="power.png" alt="" height="35px" width="35px"></i>Logout</a></li>
-                    <!-- <li><a href="#"><i class="far fa-envelope"></i>Contact</a></li> -->
+                    <li><a href="/logout"><img src="power.png" alt="" height="35px" width="35px"></i>Logout</a></li>
+                    <!-- <li><a href="#">s<i class="far fa-envelope"></i>Contact</a></li> -->
                 </ul>
             </div>
             <div class="right-column container">
+
                 <button type="button" class="btn btn-color1 my-5 btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Add Entry
                 </button>
@@ -89,21 +91,13 @@
                                         <!-- <input type="Category" class="form-control" id="inputPassword4"> -->
                                         <select id="Category" class="form-select">
                                           <!-- <option selected>Choose...</option> -->
-                                          <option selected>Stocks</option>
+                                          <option selected>Gold</option>
+                                          <option>Silver</option>
                         
                                         </select>
                                       </div>
                                     <div class="col-md-6">
-                                      <label for="type" class="form-label">Name</label>
-                                      <!-- <input type="Category" class="form-control" id="inputPassword4"> -->
-                                      <select id="type" class="form-select">
-                                        <!-- <option >Choose...</option> -->
-                                        <option selected>Reliance</option>
-                                   
-                                      </select>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="unit" class="form-label">Quantity</label>
+                                        <label for="unit" class="form-label">Quantity(in Grams only)</label>
                                         <input type="number" class="form-control" id="unit" >
                                       </div>
 
@@ -136,19 +130,31 @@
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                 <button type="button" class="btn btn-primary">Add</button>
-                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                    <strong>Holy guacamole!</strong> You should check in on some of those fields below.
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                  </div>
                             </div>
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                              </div>
                         </div>
                         
                     </div>
                 </div>
+                <div class="category">
+                    <div>
+                        <h1>Catgories</h1>
+                    </div>
+                    <div class="btn-padding">
+                        <button type="button" class="btn btn-color mx-2" id="filter1" onclick="filter1()">Gold</button>
+                        <button type="button" class="btn btn-color  mx-2" id="filter2" onclick="filter2()">Silver</button>
+                       
+                        <a href="/spending"><button type="button" class="btn btn-color mx-2" id="reset"> Remove Filter</button></a>
+
+                    </div>
+
+                </div>
                 <div>
                     <h1>Transaction History</h1>
                  </div>
-
                 <table class="table " id="mytable" border="3px solid black">
                     <thead border="3px solid black" style="height: 51px;" >
                         <tr >
@@ -201,14 +207,19 @@
                     </thead>
                         <tr>
                             <td>1</td>
-                            <td>Reliance</td>
-                            <td id="liverate">....</td>
+                            <td>Gold</td>
+                            <td id="livegold">....</td>
                         </tr>
-                        
+                        <tr>
+                            <td>2</td>
+                            <td>Silver</td>
+                            <td id="livesilver">....</td>
+                        </tr>
+                       
                     <tbody id="output"></tbody>
                 </table>
             </div>
-
+            </div>
 
 
 

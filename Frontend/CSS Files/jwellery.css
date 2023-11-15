@@ -1,0 +1,38 @@
+.thead th {
+    text-align: center;
+  }
+  .category {
+    /* height: 100px; */
+    border-radius: 30px;
+    color: black;
+    background-color: white;
+    margin-top: 1%;
+    margin-bottom: 5%;
+  }
+  .btn-color {
+    /* background-color: #003366; */
+    color: black;
+    border: 2px solid black;
+  }
+  .btn-color:hover {
+    color: white;
+    background-color: #003366;
+  }
+  .btn-padding {
+    padding: 2%;
+  }
+  .btn-color1:hover {
+    color:black;
+    background-color: white;
+    border:1px solid black
+  }
+  .btn-color1 {
+    background-color: #003366;
+    color: white;
+    border: 1px solid black;
+  }
+  .table2{
+    margin-top: 5%;
+
+  }
+  
