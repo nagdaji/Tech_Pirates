@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
+    <script src="https://kit.fontawesome.com/e018de74d3.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="all_connect.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Montserrat:wght@100&family=Roboto:wght@300&family=Sacramento&display=swap"
+        rel="stylesheet">
+    <script src="https://kit.fontawesome.com/38fc30680a.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"
+        integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+
+
+    <!-- ======datatable==== -->
+
+    <link rel="stylesheet" href="//cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <script src="//cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+            $('#mytable').DataTable();
+        });
+        const toastTrigger = document.getElementById('liveToastBtn')
+        const toastLiveExample = document.getElementById('liveToast')
+
+        if (toastTrigger) {
+            const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+            toastTrigger.addEventListener('click', () => {
+                toastBootstrap.show()
+            })
+        }
+    </script>
+    <style>
+        .btn-color1:hover {
+    color:black;
+    background-color: white;
+    border:1px solid black
+  }
+  .btn-color1 {
+    background-color: #003366;
+    color: white;
+    border: 1px solid black;
+  }
+
+  
+    </style>
+</head>
+
+<body>
+    <div class="main-win">
+        <div class="navbar">
+            <h2 class="text-heading">Welcome to xLedger<br><span id="name">
+                    <h5>Jatin</h5>
+                </span>
+            </h2>
+
+        </div>
+        <div class="contain">
+            <div class="left-column sidebar">
+                <ul>
+                    <li><a href="home.html" class="first-block"><img src="home-button (1).png" alt="" height="35px"
+                                width="35px">Home</a></li>
+                    <li><a href="add_entry.html"><img src="add.png" alt="" height="35px" width="35px">Add Entry</a></li>
+                    <li><a href="spending.html"><img src="earnings.png" alt="" height="35px" width="35px">My
+                            Expenses</a></li>
+                    <li><a href="group.html"><img src="multiple-users-silhouette.png" alt="" height="35px"
+                                width="35px">Groups</a></li>
+                    <li><a href="e-cuurency.html"><img src="bit-coin.png" alt="" height="35px"
+                                width="35px">E-Currency</a></li>
+                    <li><a href="stocks.html"><img src="line-chart.png" alt="" height="35px" width="35px">Stocks</a>
+                    </li>
+                    <li><a href="exchange.html"><img src="exchange.png" alt="" height="35px" width="35px">Currency</a>
+                    </li>
+                    <li><a href="report.html"><img src="report.png" alt="" height="35px" width="35px">Report</a></li>
+                    <li><a href="/" id="hovering"><img src="bell.png" alt="" height="35px" width="35px">Reminder</a>
+                    </li>
+                    <li><a href="contact.html"><img src="support.png" alt="" height="35px" width="35px"></i>Contact
+                            Us</a></li>
+                    <li><a href="#"><img src="power.png" alt="" height="35px" width="35px"></i>Logout</a></li>
+                    <!-- <li><a href="#"><i class="far fa-envelope"></i>Contact</a></li> -->
+                </ul>
+            </div>
+            <div class="right-column container">
+                <button type="button" class="btn btn-color1 my-5 btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Set Notification
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Add Reminder</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="date" class="form-label">Due Date</label>
+                                        <input type="date" class="form-control" id="date">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="Category" class="form-label">Category</label>
+                                        <!-- <input type="Category" class="form-control" id="inputPassword4"> -->
+                                        <select id="Category" class="form-select">
+                                            <option selected>Bills</option>
+                                            <option>Food</option>
+                                            <option>Travel</option>
+                                            <option>Shopping</option>
+                                            <option>Investment</option>
+                                            <option>Crypto Currency</option>
+                                            <option>Gold</option>
+                                            <option>Silver</option>
+                                            <option>Stocks</option>
+                                            <option>Misellenous</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="remarks" class="form-label">Remarks</label>
+                                        <input type="text" class="form-control" id="remarks">
+                                    </div>
+            
+                                    <div class="col-md-6">
+                                        <label for="amount" class="form-label">Amount</label>
+                                        <input type="text" class="form-control" id="amount">
+                                    </div>
+            
+<!--             
+                                    <div >
+                                        <button type="submit" class="btn btn-color1 btn-primary " id="liveToastBtn" style="width: 40%;">Set
+                                            Reminder</button>
+                                    </div> -->
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-color1" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-color1">Set Reminder</button>
+                            </div>
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                              </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div>
+                    <h2>My Reminder</h2>
+                </div>
+                <table class="table " id="mytable" border="3px solid black">
+                    <thead border="3px solid black" style="height: 51px;" >
+                        <tr >
+                            <th scope="col" style="text-align: center; background:rgb(0 51 102 / 93%); color:rgb(255, 255, 255);">S.no</th>
+                            <th scope="col" style="text-align: center;background:rgb(0 51 102 / 93%); color:rgb(255, 255, 255);" class="tablehead">Due Date</th>
+                            <!-- <th scope="col" style="text-align: center;background:rgb(0 51 102 / 93%); color:rgb(255, 255, 255);" class="tablehead">Name</th> -->
+                            <!-- <th scope="col" style="text-align: center;background:rgb(0 51 102 / 93%); color:rgb(255, 255, 255);" class="tablehead">Category</th> -->
+                            <!-- <th scope="col" style="text-align: center;background:rgb(0 51 102 / 93%); color:rgb(255, 255, 255);" class="tablehead">Quantity</th> -->
+                            <th scope="col" style="text-align: center;background:rgb(0 51 102 / 93%); color:rgb(255, 255, 255);" class="tablehead">Remarks</th>
+                            <!-- <th scope="col" style="text-align: center;background:rgb(0 51 102 / 93%); color:rgb(255, 255, 255);" class="tablehead">Mode of payment</th> -->
+                            <th scope="col" style="text-align: center;background:rgb(0 51 102 / 93%); color:rgb(255, 255, 255);" class="tablehead">Amount</th>
+                            <!-- <th scope="col" style="text-align: center;background:rgb(0 51 102 / 93%); color:rgb(255, 255, 255);" class="tablehead">Profit/Loss</th> -->
+                        </tr>
+                    </thead>
+                    <tbody id="output"></tbody>
+                </table>
+               
+                
+               
+              
+          
+
+
+
+
+            </div>
+
+        </div>
+
+</body>
+
+</html>
