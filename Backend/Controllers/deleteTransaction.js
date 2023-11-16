@@ -3,8 +3,8 @@ const db = require("../routes/db-config");
 const deleteTransaction = async (req, res) => {
   const email = req.body.email;
   const Tid = req.body.Tid;
-  console.log(email);
-  console.log(Tid);
+  // console.log(email);
+  // console.log(Tid);
   //   const tablename = "transactionuser"+;
   const sql = `SELECT sno FROM userinfo WHERE email = '${email}'`;
   db.query(sql, async (err, results) => {

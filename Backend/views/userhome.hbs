@@ -1,111 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Home</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
-            integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-            crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/e018de74d3.js" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
 
-    <link
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Home</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/e018de74d3.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
+
+  <link
     href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Montserrat:wght@100&family=Roboto:wght@300&family=Sacramento&display=swap"
     rel="stylesheet">
-<script src="https://kit.fontawesome.com/38fc30680a.js" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/38fc30680a.js" crossorigin="anonymous"></script>
 
- <link rel="stylesheet" href="/CSS/userhome.css">
+  <link rel="stylesheet" href="/CSS/userhome.css">
 
 </head>
-<body>
-    <div class="main-win">
-        <div class="navbar">
-            <h2 class="text-heading">Welcome to xLedger<br><span><h6 id = "username" >{{username}}</h6></span>
-            </h2>
-            <h3 id="useremail">user: {{email}}</h3>
-            
-        </div>
-        <div class="contain">
-            <div class="left-column sidebar">
-                <ul>
-                    <li><a href="/" class="first-block" id="hovering"><img src="/images/home-button.png" alt="" height="35px" width="35px">Home</a></li>
-                    <li><a href="/add_entry" ><img src="/images/add.png" alt="" height="35px" width="35px">Add Entry</a></li>
-                    <li><a href="/spending"><img src="/images/earnings.png" alt="" height="35px" width="35px">My Expenses</a></li>
-                    <li><a href="/group"><img src="/images/multiple-users-silhouette.png" alt="" height="35px" width="35px">Groups</a></li>
-                    <li><a href="/Ecuurency"><img src="/images/bit-coin.png" alt="" height="35px" width="35px">E-Currency</a></li>
-                    <li><a href="/stocks"><img src="/images/line-chart.png" alt="" height="35px" width="35px">Stocks</a></li>
-                    <li><a href="/exchange"><img src="/images/exchange.png" alt="" height="35px" width="35px">Currency</a></li>
-                    <li><a href="/report"><img src="/images/report.png" alt="" height="35px" width="35px">Report</a></li>
-                    <li><a href="/contact"><img src="/images/support.png" alt="" height="35px" width="35px"></i>Contact Us</a></li>
-                    <li><a href="/logout"><img src="/images/power.png" alt="" height="35px" width="35px"></i>Logout</a></li>
-                </ul>
-            </div>
-            <div class="right-column container">
-             
-                <div class="row">
-                    <div class="column" style="background-color:white">
-                      <h2 class="new-1">Total Income</h2>
-                      <p>Monthly</p>
-                      <h1 class="new-2">2000000</h1>
-                    </div>
-                    <div class="column" style="background-color:white;">
-                      <h2 class = "new-1">Total Saving</h2>
-                      <p>Monthly</p>
-                      <h1 class="new-2">2000000</h1>
-                    </div>
-                   <div class="column" style="background-color:white">
-                      <h2 class="new-1">Total Expenses</h2>
-                      <p>Monthly</p>
-                      <h1 class="new-2">2000000</h1>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="column" style="background-color:white">
-                      <h2 class="new-1">Gold</h2>
-                      <!-- <p>Monthly</p> -->
-                      <!-- <h1 >2000000</h1> -->
-                      <h4 class="new-2">Current Price 3000</h4>
-                      <h4>Profit : 200</h4>
-                      
-                    </div>
-                    <div class="column" style="background-color:white">
-                      <h2 class="new-1">Silver</h2>
-                      <!-- <p>Monthly</p> -->
-                      <!-- <h1 >2000000</h1> -->
-                      <h4 class="new-2">Current Price 3000</h4>
-                      <h4>Profit : 200</h4>
-                      
-                    </div>
-                   <div class="column" style="background-color:white">
-                      <h2 class="new-1">Crypto Currency</h2>
-                      <h4 class="new-2">Total Investment 3000</h4>
-                      <h4>Net Profit : 200</h4>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="column" style="background-color:white">
-                      <h2 class="new-1">Stocks</h2>
-                      <h4 class="new-2">Total Investment 3000</h4>
-                      <h4>Net Profit : 200</h4>
-                    </div>
-                    <div class="column" style="background-color:white;">
-                      <h2 class = "new-1">Total Saving</h2>
-                      <p>Monthly</p>
-                      <h1 class="new-2">2000000</h1>
-                    </div>
-                  
-                  </div>
 
-                  <div class="row">
-                
-                  </div>
-     
-            </div>
-            
+<body onload="liverates()">
+  <div class="main-win">
+    <div class="navbar">
+      <h2 class="text-heading">Welcome to xLedger<br>
+      <span>
+          <h6 id="username">{{username}}</h6>
+        </span>
+      </h2>
+      <h3 id="useremail">user:<span id="pagemail">{{email}}</span> </h3>
+
     </div>
-    
+    <div class="contain">
+      <div class="left-column sidebar">
+        <ul>
+          <li><a href="/" class="first-block" id="hovering"><img src="/images/home-button.png" alt="" height="35px"
+                width="35px">Home</a></li>
+          <li><a href="/add_entry"><img src="/images/add.png" alt="" height="35px" width="35px">Add Entry</a></li>
+          <li><a href="/spending"><img src="/images/earnings.png" alt="" height="35px" width="35px">My Expenses</a></li>
+          <li><a href="/group"><img src="/images/multiple-users-silhouette.png" alt="" height="35px"
+                width="35px">Groups</a></li>
+          <li><a href="/crypto"><img src="/images/bit-coin.png" alt="" height="35px" width="35px">Cryptos</a></li>
+          <li><a href="/stocks"><img src="/images/line-chart.png" alt="" height="35px" width="35px">Stocks</a></li>
+          <li><a href="/exchange"><img src="/images/exchange.png" alt="" height="35px" width="35px">Currency</a></li>
+          <li><a href="/jwellery"><img src="/images/diamond.png" alt="" height="35px" width="35px">Jwellery</a></li>
+          <li><a href="/report"><img src="/images/report.png" alt="" height="35px" width="35px">Report</a></li>
+          <li><a href="/contact"><img src="/images/support.png" alt="" height="35px" width="35px"></i>Contact Us</a>
+          </li>
+          <li><a href="/logout"><img src="/images/power.png" alt="" height="35px" width="35px"></i>Logout</a></li>
+        </ul>
+      </div>
+      <div class="right-column container">
+
+        <div class="row">
+          <div class="column" style="background-color:white">
+            <h2 class="new-1">Total Income</h2>
+            <p>Monthly</p>
+            <h1 class="new-2" id="monthlyincome">2000000</h1>
+          </div>
+          <div class="column" style="background-color:white;">
+            <h2 class="new-1">Saving Target</h2>
+            <p>Monthly</p>
+            <h1 class="new-2" id="savingtarget">2000000</h1>
+          </div>
+          <div class="column" style="background-color:white">
+            <h2 class="new-1">Total Expenses</h2>
+            <p>Monthly</p>
+            <h1 class="new-2" id="totalexpences">2000000</h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="column" style="background-color:white;">
+            <h2 class="new-1">Total Saving</h2>
+            <p>Monthly</p>
+            <h1 class="new-2">2000000</h1>
+          </div>
+
+          <div class="column" style="background-color:white">
+            <h2 class="new-1">Gold</h2>
+            <p>( Per 10 grams )</p>
+            <h4 class="new-2">Live Rate : <span id="livegold">61700</span><sup style="color: red;">*</sup></h4>
+            <h4>Profit : 200</h4>
+             <br>
+            <span class="error">*margin of error 1%</span>
+          </div>
+          <div class="column" style="background-color:white">
+            <h2 class="new-1">Silver</h2>
+            <p>( Per Kilograms )</p>
+            <!-- <h1 >2000000</h1> -->
+            <h4 class="new-2">Live Rate : <span id="livesilver">70999</span><sup style="color: red;">*</sup></h4>
+            <h4>Profit : 200</h4>
+            <br>
+            <span class="error">*margin of error 1%</span>
+
+          </div>
+          <div class="row">
+            <div class="column" style="background-color:white">
+              <h2 class="new-1">Crypto Currency</h2>
+              <h4 class="new-2">Total Investment 3000</h4>
+              <h4>Net Profit : 200</h4>
+            </div>
+            <div class="column" style="background-color:white">
+              <h2 class="new-1">Stocks</h2>
+              <h4 class="new-2">Total Investment 3000</h4>
+              <h4>Net Profit : 200</h4>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <script src="Javascript/userhome.js"></script>
 </body>
+
 </html>
