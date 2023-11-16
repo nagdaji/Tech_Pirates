@@ -62,16 +62,82 @@
             <div class="right-column container">
              
                 <div class="row">
-                    <div class="column" style="background-color:white">
-                      <h2 class="new-1">Total Income</h2>
-                      <p>Monthly</p>
-                      <h1 class="new-2">2000000</h1>
+                  <div class="column" style="background-color:white">
+                    <h2 class="new-1">Total Income</h2>
+                    <p>Monthly</p>
+                    <h1 class="new-2">0</h1>
+                    <!-- Button trigger modal -->
+                    <div class="edit-icon">
+                    <a data-bs-toggle="modal" data-bs-target="#exampleModal">
+                      <img src="edit.png" alt="" height="35px" width="35px">
+                    </a>
+                  </div>
+        
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                      aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Total Monthly Income</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            <div class="mb-3">
+                              <label for="income" class="form-label">Enter Your Monthly Income</label>
+                              <input type="number" class="form-control" id="income" >
+                              <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+                            <button type="button" class="btn btn-color mx-2"  data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-color mx-2">Save Changes</button>
+                            <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                            
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    <div class="column" style="background-color:white;">
-                      <h2 class = "new-1">Total Saving</h2>
-                      <p>Monthly</p>
-                      <h1 class="new-2">2000000</h1>
+                  </div>
+                  <div class="column" style="background-color:white;">
+                    <h2 class="new-1">Total Saving</h2>
+                    <p>Monthly</p>
+                    <h1 class="new-2">0</h1>
+                    <!-- Button trigger modal -->
+                    <div class="edit-icon">
+                      <a data-bs-toggle="modal" data-bs-target="#Modal">
+                        <img src="edit.png" alt="" height="35px" width="35px">
+                      </a>
                     </div>
+        
+                    <!-- Modal -->
+                    <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                      aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Monthly Expected Saving</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            <div class="mb-3">
+                              <label for="saving" class="form-label">Enter Your Monthly Expected Saving</label>
+                              <input type="number" class="form-control" id="saving" >
+                              <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button> -->
+                            <button type="button" class="btn btn-color mx-2"  data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-color mx-2">Save Changes</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
                    <div class="column" style="background-color:white">
                       <h2 class="new-1">Total Expenses</h2>
                       <p>Monthly</p>
