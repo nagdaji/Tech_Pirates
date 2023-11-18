@@ -7,12 +7,6 @@ const spendings = require("./spendings");
 const deleteTransaction = require("./deleteTransaction");
 const updateTransaction = require("./updateTransaction");
 const crypto = require("./crypto");
-const dailyreport = require("./dailyreport");
-const weeklyreport = require("./weeklyreport");
-const weeklyreport2 = require("./weeklyreport2");
-const monthlyreportdate = require("./monthlyreportdate");
-const monthlyreportcategory = require("./monthlyreportcategory");
-const yearlydate = require("./yearlydate");
 const yearlycategory = require("./yearlycategory");
 
 router.post("/register", register);
