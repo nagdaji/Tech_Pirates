@@ -1,17 +1,13 @@
 const db = require("../routes/db-config");
-const dailyreport = async (req, res) => {
+const showexpences = async (req, res) => {
   const email = req.body.email;
-  const date = req.body.searchdate;
 
-  // console.log(date);
   const sql = `SELECT sno FROM userinfo WHERE email = '${email}'`;
   db.query(sql, (err, result) => {
     if (err) throw err;
-
     const tablename = "transactionuser" + result[0].sno;
-    const sqlsearch = `SELECT SUM(amount),category FROM ${tablename}
-    WHERE date='${date}'
-    group by category;`;
+    const sqlsearch = `select SUM(amount) from ${tablename}
+    where MONTH(date)=MONTH(now())`;
     db.query(sqlsearch, (err, results) => {
       if (err) throw err;
       return res.json({
@@ -20,4 +16,4 @@ const dailyreport = async (req, res) => {
     });
   });
 };
-module.exports = dailyreport;
+module.exports = showexpences;
