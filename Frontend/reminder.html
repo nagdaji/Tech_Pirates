@@ -15,35 +15,16 @@
     <script src="https://kit.fontawesome.com/e018de74d3.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="all_connect.css">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Montserrat:wght@100&family=Roboto:wght@300&family=Sacramento&display=swap"
-        rel="stylesheet">
-    <script src="https://kit.fontawesome.com/38fc30680a.js" crossorigin="anonymous"></script>
+    <script 0src="https://kit.fontawesome.com/38fc30680a.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.7.0.js"
         integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
 
 
-    <!-- ======datatable==== -->
 
-    <link rel="stylesheet" href="//cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
-    <script src="//cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-
-    <script>
-
-        $(document).ready(function () {
-            $('#mytable').DataTable();
-        });
-        const toastTrigger = document.getElementById('liveToastBtn')
-        const toastLiveExample = document.getElementById('liveToast')
-
-        if (toastTrigger) {
-            const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
-            toastTrigger.addEventListener('click', () => {
-                toastBootstrap.show()
-            })
-        }
-    </script>
+    <link rel="stylesheet" href="all_connect.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
     <style>
         .btn-color1:hover {
     color:black;
@@ -56,9 +37,43 @@
     border: 1px solid black;
   }
 
+    .right-column{
+        font-family: 'Playfair Display', serif;   
+    }
+  .card {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: center;
+        margin: 20px;
+        box-sizing: border-box;
+        width: calc(
+          28.33% - 20px
+        ); /* Calculate the width to fit 3 cards in a row with some margin */
+        display: inline-block;
+        vertical-align: top;
+      }
+
+      /* Clear any extra white space from inline-block elements */
+      .card-container::after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+     
+      .category{
+        color: #003366;
+       
+      }
+      .date{
+        color: #003366;
+        /* font-weight: 500; */
+        font-size: small;
+      }
   
     </style>
+
 </head>
+
 
 <body>
     <div class="main-win">
@@ -163,23 +178,60 @@
                 <div>
                     <h2>My Reminder</h2>
                 </div>
-                <table class="table " id="mytable" border="3px solid black">
-                    <thead border="3px solid black" style="height: 51px;" >
-                        <tr >
-                            <th scope="col" style="text-align: center; background:rgb(0 51 102 / 93%); color:rgb(255, 255, 255);">S.no</th>
-                            <th scope="col" style="text-align: center;background:rgb(0 51 102 / 93%); color:rgb(255, 255, 255);" class="tablehead">Due Date</th>
-                            <!-- <th scope="col" style="text-align: center;background:rgb(0 51 102 / 93%); color:rgb(255, 255, 255);" class="tablehead">Name</th> -->
-                            <!-- <th scope="col" style="text-align: center;background:rgb(0 51 102 / 93%); color:rgb(255, 255, 255);" class="tablehead">Category</th> -->
-                            <!-- <th scope="col" style="text-align: center;background:rgb(0 51 102 / 93%); color:rgb(255, 255, 255);" class="tablehead">Quantity</th> -->
-                            <th scope="col" style="text-align: center;background:rgb(0 51 102 / 93%); color:rgb(255, 255, 255);" class="tablehead">Remarks</th>
-                            <!-- <th scope="col" style="text-align: center;background:rgb(0 51 102 / 93%); color:rgb(255, 255, 255);" class="tablehead">Mode of payment</th> -->
-                            <th scope="col" style="text-align: center;background:rgb(0 51 102 / 93%); color:rgb(255, 255, 255);" class="tablehead">Amount</th>
-                            <!-- <th scope="col" style="text-align: center;background:rgb(0 51 102 / 93%); color:rgb(255, 255, 255);" class="tablehead">Profit/Loss</th> -->
-                        </tr>
-                    </thead>
-                    <tbody id="output"></tbody>
-                </table>
-               
+                <div class="card-container">
+                    <!-- Card 1 -->
+                    <div class="card">
+                      <h2 class="category"><b>Bills</b></h2>
+                      <p class="date"><span id="duedate">12/08/23,</span>&emsp13;<span id="time">23:05 IST</span></p>
+
+                      <p id="remark"><i>Electricity bill of home 1</i></p>
+                      <div class=" gap-2 mb-2">
+                        <button class="btn btn-color1" type="button">Delete Reminder</button>
+                      </div>
+                    </div>
+              
+                    <!-- Card 2 -->
+                    <div class="card">
+                        <h2 class="category"><b>Bills</b></h2>
+                        <p class="date"><span id="duedate">12/08/23,</span>&emsp13;<span id="time">23:05 IST</span></p>
+  
+                        <p id="remark"><i>Electricity bill of home 1</i></p>
+                        <div class=" gap-2 mb-2">
+                          <button class="btn btn-color1" type="button">Delete Reminder</button>
+                        </div>
+                      </div>
+                
+              
+                    <!-- Card 3 -->
+                    <div class="card">
+                        <h2 class="category"><b>Bills</b></h2>
+                        <p class="date"><span id="duedate">12/08/23,</span>&emsp13;<span id="time">23:05 IST</span></p>
+  
+                        <p id="remark"><i>Electricity bill of home 1</i></p>
+                        <div class=" gap-2 mb-2">
+                          <button class="btn btn-color1" type="button">Delete Reminder</button>
+                        </div>
+                      </div>
+                      <div class="card">
+                        <h2 class="category"><b>Bills</b></h2>
+                        <p class="date"><span id="duedate">12/08/23,</span>&emsp13;<span id="time">23:05 IST</span></p>
+  
+                        <p id="remark"><i>Electricity bill of home 1</i></p>
+                        <div class=" gap-2 mb-2">
+                          <button class="btn btn-color1" type="button">Delete Reminder</button>
+                        </div>
+                      </div>
+                      <div class="card">
+                        <h2 class="category"><b>Bills</b></h2>
+                        <p class="date"><span id="duedate">12/08/23,</span>&emsp13;<span id="time">23:05 IST</span></p>
+  
+                        <p id="remark"><i>Electricity bill of home 1</i></p>
+                        <div class=" gap-2 mb-2">
+                          <button class="btn btn-color1" type="button">Delete Reminder</button>
+                        </div>
+                      </div>
+                    
+                  </div>
                 
                
               
