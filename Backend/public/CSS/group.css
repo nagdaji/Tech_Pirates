@@ -1,0 +1,110 @@
+.btn-color1:hover {
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+}
+
+.btn-color1 {
+  background-color: #003366;
+  color: white;
+  border: 1px solid black;
+}
+
+.right-column {
+  font-family: "Playfair Display", serif;
+}
+
+.card {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+  margin: 20px;
+  box-sizing: border-box;
+  width: calc(28.33% - 20px);
+  /* Calculate the width to fit 3 cards in a row with some margin */
+  display: inline-block;
+  vertical-align: top;
+  border: 0.7px solid #003366;
+
+  box-shadow: 1px 1px 7px #000000;
+}
+
+/* Clear any extra white space from inline-block elements */
+.card-container::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.category {
+  color: #003366;
+}
+
+.date {
+  color: #003366;
+  /* font-weight: 500; */
+  font-size: medium;
+}
+.btn-color1:hover {
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+}
+.btn-color1 {
+  background-color: #003366;
+  color: white;
+  border: 1px solid black;
+}
+
+.right-column {
+  font-family: "Playfair Display", serif;
+}
+.card {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+  margin: 20px;
+  box-sizing: border-box;
+  width: calc(
+    28.33% - 20px
+  ); /* Calculate the width to fit 3 cards in a row with some margin */
+  display: inline-block;
+  vertical-align: top;
+}
+
+/* Clear any extra white space from inline-block elements */
+.card-container::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.category {
+  color: #003366;
+}
+.date {
+  color: #003366;
+  /* font-weight: 500; */
+  font-size: small;
+}
+.add-button {
+  float: right;
+}
+.click-div {
+  text-decoration: none;
+}
+.remark {
+  color: black;
+}
+
+.del-image {
+  justify-content: end;
+  padding-top: 28px;
+  margin-left: 30px;
+}
+.box {
+  display: flex;
+}
+.member-email {
+  width: 82%;
+}

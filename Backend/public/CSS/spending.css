@@ -9,16 +9,19 @@ body {
   overflow: hidden;
 }
 #username {
-  font-size: 80%;
+  font-family: "Playfair Display", serif;
+  font-size: 70%;
 }
 #useremail {
   font-size: 110%;
   margin-right: 2%;
+  font-family: "Playfair Display", serif;
   color: white;
 }
 .text-heading {
   margin-left: 30px;
   text-align: left;
+  font-family: "Playfair Display", serif;
   color: white;
 }
 .user {
@@ -44,6 +47,7 @@ body {
 }
 #hovering {
   padding-left: 30px;
+  padding-right: 12px;
   box-shadow: 3px 3px 3px gray;
 }
 .contain {
@@ -83,10 +87,10 @@ body {
   overflow: scroll;
   padding-bottom: 100px;
 }
-.right-column::-webkit-scrollbar {
-  margin-left: 60%;
-  display: none;
-}
+/* .right-column::-webkit-scrollbar {
+  /* margin-left: 60%; */
+/* display: none; */
+/* } */
 #mytable_wrapper {
   justify-content: center;
   /* margin-left: 10%; */
@@ -96,7 +100,7 @@ body {
   border: 3px solid black;
 }
 li {
-  padding: 10px;
+  padding-left: 10px;
   text-align: center;
   align-items: center;
   list-style: none;
@@ -202,4 +206,7 @@ img {
 .delete:hover {
   color: rgb(255, 255, 255);
   background-color: #003366;
+}
+input {
+  border: 1px solid black;
 }

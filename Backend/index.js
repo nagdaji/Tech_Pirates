@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const dotenv = require("dotenv").config();
 const path = require("path");
 const db = require("./routes/db-config");
 const cookie = require("cookie-parser");
@@ -22,6 +23,7 @@ db.connect((err) => {
   if (err) throw err;
   console.log("connected");
 });
+
 
 app.use("/", require("./routes/pages"));
 

@@ -61,7 +61,10 @@ async function getdata() {
       let totalamount = 0;
       let sno1 = 1;
       for (let i = 0; i < length; i++) {
-        if (element[i].currencyname != null || element[i].quantity != null) {
+        if (
+          (element[i].currencyname != null || element[i].quantity != null) &&
+          element[i].category == "Cryptos"
+        ) {
           totalamount += Number(element[i].amount);
 
           let id1 = "row" + `${element[i].Tid}`;

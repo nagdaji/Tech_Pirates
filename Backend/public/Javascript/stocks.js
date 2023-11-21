@@ -1,6 +1,6 @@
 const form1 = document.getElementById("form");
 form1.addEventListener("submit", () => {
-  console.log("submited");
+  // console.log("submited");
 
   const entry1 = {
     date: document.getElementById("date").value,
@@ -110,16 +110,20 @@ async function getstocksrate() {
       let year = date1.getFullYear();
 
       var searchdate = `${year}-${month}-${day}`;
-
-      var openPrice = data["Time Series (Daily)"][searchdate]["1. open"];
-      var highPrice = data["Time Series (Daily)"][searchdate]["2. high"];
-      var lowPrice = data["Time Series (Daily)"][searchdate]["3. low"];
-      var closePrice = data["Time Series (Daily)"][searchdate]["4. close"];
+      console.log(searchdate);
+      var openPrice = 2357.3501;
+      var highPrice = 2373.0;
+      var lowPrice = 2353.0;
+      var closePrice = 2355.8501;
+      openPrice = data["Time Series (Daily)"]["2023-11-17"]["1. open"];
+      highPrice = data["Time Series (Daily)"][searchdate]["2. high"];
+      lowPrice = data["Time Series (Daily)"][searchdate]["3. low"];
+      closePrice = data["Time Series (Daily)"][searchdate]["4. close"];
 
       //     const num = exchangeRate.toFixed(2);
-      document.getElementById("open").innerHTML = openPrice.toFixed(2);
-      document.getElementById("high").innerHTML = highPrice.toFixed(2);
-      document.getElementById("low").innerHTML = lowPrice.toFixed(2);
-      document.getElementById("close").innerHTML = closePrice.toFixed(2);
+      document.getElementById("open").innerHTML = openPrice;
+      document.getElementById("high").innerHTML = highPrice;
+      document.getElementById("low").innerHTML = lowPrice;
+      document.getElementById("close").innerHTML = closePrice;
     });
 }

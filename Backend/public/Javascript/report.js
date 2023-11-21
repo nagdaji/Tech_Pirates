@@ -16,13 +16,9 @@ form.addEventListener("submit", async () => {
     //read es .json
     .then((res) => res.json())
     .then((data) => {
-      //   // console.log(typeof data.results);
       //   const data1 = [data];
-      //   // console.log(data1);
       //   const length = data1[0].results.length;
-      //   // console.log(length);
       //   const element = data1[0].results;
-      // console.log(data.results);
       let value = [];
       let category = [];
       for (let i = 0; i < data.results.length; i++) {
@@ -30,8 +26,6 @@ form.addEventListener("submit", async () => {
         // console.log(data.results[i]["SUM(amount)"]);
         value.push(data.results[i]["SUM(amount)"]);
         category.push(data.results[i]["category"]);
-        // console.log(value);
-        // console.log(category);
       }
 
       let ctx = document.getElementById("myChart").getContext("2d");
@@ -46,17 +40,19 @@ form.addEventListener("submit", async () => {
           labels: category,
           datasets: [
             {
-              label: "Amount",
+              label: "Amount ",
               data: value,
               backgroundColor: [
-                "red",
-                "blue",
-                "yellow",
-                "green",
-                "purple",
+                "#2D728F",
+                "#C1FF9B",
+                "#6457A6",
+                "#FFACE4",
                 "orange",
-                "cyan",
-                "violet",
+                "teal",
+                "darkgray",
+                "#95B46A",
+                "blue",
+                "purple",
               ],
               borderWidth: 3,
             },
@@ -65,6 +61,29 @@ form.addEventListener("submit", async () => {
 
         options: {
           responsive: false,
+          layout: {
+            padding: { top: 10, bottom: 60 },
+          },
+          plugins: {
+            tooltip: {
+              enabled: true,
+              backgroundColor: "black",
+            },
+            legend: {
+              labels: {
+                usePointStyle: true,
+              },
+              title: {
+                display: true,
+                text: "Date Wise Expences",
+              },
+              position: "top",
+            },
+            animation: {
+              duration: 9000,
+              easing: "easyInOutBounce",
+            },
+          },
         },
       });
     });
@@ -73,6 +92,108 @@ form.addEventListener("submit", async () => {
 // =============== Weekly Expence ===========
 
 async function printgraph() {
+  ////////// daily ///////////////
+  const date1 = new Date();
+
+  let day = date1.getDate();
+  let month = date1.getMonth() + 1;
+  let year = date1.getFullYear();
+
+  var searchdate = `${year}-${month}-${day}`;
+  // console.log(searchdate);
+  const add_entry1 = {
+    email: document.getElementById("pagemail").innerHTML,
+    searchdate: searchdate,
+  };
+  // console.log(searchdate);
+  await fetch("/dashboard/dailyreport", {
+    method: "POST",
+    body: JSON.stringify(add_entry1),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    //read es .json
+    .then((res) => res.json())
+    .then((data) => {
+      // console.log(data);
+      let value = [];
+      let category = [];
+      for (let i = 0; i < data.results.length; i++) {
+        // console.log(data.results[i]);
+        // console.log(data.results[i]["SUM(amount)"]);
+        value.push(data.results[i]["SUM(amount)"]);
+        category.push(data.results[i]["category"]);
+        // console.log(value);
+        // console.log(category);
+      }
+
+      let ctx9 = document.getElementById("myChart").getContext("2d");
+
+      var graphie9 = Chart.getChart("myChart");
+      if (graphie9) {
+        graphie9.destroy();
+      }
+      graphie9 = new Chart(ctx9, {
+        type: "doughnut",
+        data: {
+          labels: category,
+          datasets: [
+            {
+              label: "Amount  ",
+              data: value,
+              backgroundColor: [
+                "#C1FF9B",
+                "#6457A6",
+                "#FFACE4",
+                "#2D728F",
+                "orange",
+                "teal",
+                "darkgray",
+                "#95B46A",
+                "blue",
+                "purple",
+                "#2D728F",
+                "#C1FF9B",
+                "#6457A6",
+                "#FFACE4",
+                "orange",
+              ],
+              borderColor: "silver",
+              borderWidth: 1,
+            },
+          ],
+        },
+
+        options: {
+          responsive: false,
+          layout: {
+            padding: { top: 10, bottom: 60 },
+          },
+          plugins: {
+            tooltip: {
+              enabled: true,
+              backgroundColor: "black",
+            },
+            legend: {
+              labels: {
+                usePointStyle: true,
+              },
+              title: {
+                display: true,
+                text: "Today's Expences",
+              },
+              position: "top",
+            },
+            animation: {
+              duration: 9000,
+              easing: "easyInOutBounce",
+            },
+          },
+        },
+      });
+    });
+
   // /Weekly Datewiae ----------
   const add_entry = {
     email: document.getElementById("pagemail").innerHTML,
@@ -110,25 +231,52 @@ async function printgraph() {
           labels: date,
           datasets: [
             {
-              label: "Amount",
+              label: "Amount ",
               data: value,
+              hoverBackgroundColor: ["#565656"],
               backgroundColor: [
-                "red",
-                "blue",
-                "yellow",
-                "green",
-                "purple",
+                "#2D728F",
+                "#C1FF9B",
+                "#6457A6",
+                "#FFACE4",
                 "orange",
-                "cyan",
-                "violet",
+                "teal",
+                "darkgray",
+                "#95B46A",
+                "blue",
+                "purple",
               ],
-              borderWidth: 3,
+              borderColor: "black",
+              borderWidth: 2,
             },
           ],
         },
 
         options: {
           responsive: false,
+          layout: {
+            padding: { top: 40, bottom: 60 },
+          },
+          plugins: {
+            tooltip: {
+              enabled: true,
+              backgroundColor: "black",
+            },
+            legend: {
+              labels: {
+                usePointStyle: true,
+              },
+              title: {
+                display: true,
+                text: "Weekly Date Wise Expences",
+              },
+              position: "top",
+            },
+            animation: {
+              duration: 9000,
+              easing: "easyInOutBounce",
+            },
+          },
         },
       });
     });
@@ -159,7 +307,7 @@ async function printgraph() {
     //read es .json
     .then((res) => res.json())
     .then((data) => {
-      console.log(data.results);
+      // console.log(data.results);
       let value = [];
       let category = [];
       for (let i = 0; i < data.results.length; i++) {
@@ -180,25 +328,57 @@ async function printgraph() {
           labels: category,
           datasets: [
             {
-              label: "Amount",
+              label: "Amount ",
               data: value,
+              hoverBackgroundColor: ["#565656"],
               backgroundColor: [
-                "red",
-                "blue",
-                "yellow",
-                "green",
-                "purple",
+                "#2D728F",
+                "#C1FF9B",
+                "#6457A6",
+                "#FFACE4",
                 "orange",
-                "cyan",
-                "violet",
+                "teal",
+                "darkgray",
+                "#95B46A",
+                "blue",
+                "purple",
               ],
-              borderWidth: 3,
+              borderColor: "black",
+              borderWidth: 2,
             },
           ],
         },
 
         options: {
           responsive: false,
+          layout: {
+            padding: { top: 40, bottom: 60 },
+          },
+          plugins: {
+            tooltip: {
+              enabled: true,
+              backgroundColor: "black",
+              // callbacks: {
+              //   labelTextColor: (context) => {
+              //     return "red";
+              //   },
+              // },
+            },
+            legend: {
+              labels: {
+                usePointStyle: true,
+              },
+              title: {
+                display: true,
+                text: "Weekly Category Wise Expences",
+              },
+              position: "top",
+            },
+            animation: {
+              duration: 9000,
+              easing: "easyInOutBounce",
+            },
+          },
         },
       });
     });
@@ -231,7 +411,7 @@ async function printgraph() {
     //read es .json
     .then((res) => res.json())
     .then((data) => {
-      console.log(data.results);
+      // console.log(data.results);
       let value = [];
       let date = [];
       for (let i = 0; i < data.results.length; i++) {
@@ -250,25 +430,52 @@ async function printgraph() {
           labels: date,
           datasets: [
             {
-              label: "Amount",
+              label: "Amount  ",
               data: value,
+              hoverBackgroundColor: ["#565656"],
               backgroundColor: [
-                "red",
-                "blue",
-                "yellow",
-                "green",
-                "purple",
+                "#2D728F",
+                "#C1FF9B",
+                "#6457A6",
+                "#FFACE4",
                 "orange",
-                "cyan",
-                "violet",
+                "teal",
+                "darkgray",
+                "#95B46A",
+                "blue",
+                "purple",
               ],
-              borderWidth: 3,
+              borderColor: "black",
+              borderWidth: 2,
             },
           ],
         },
 
         options: {
           responsive: false,
+          layout: {
+            padding: { top: 40, bottom: 60 },
+          },
+          plugins: {
+            tooltip: {
+              enabled: true,
+              backgroundColor: "black",
+            },
+            legend: {
+              labels: {
+                usePointStyle: true,
+              },
+              title: {
+                display: true,
+                text: "Monthly Date Wise Expences",
+              },
+              position: "top",
+            },
+            animation: {
+              duration: 9000,
+              easing: "easyInOutBounce",
+            },
+          },
         },
       });
     });
@@ -300,7 +507,7 @@ async function printgraph() {
     //read es .json
     .then((res) => res.json())
     .then((data) => {
-      console.log(data.results);
+      // console.log(data.results);
       let value = [];
       let category = [];
       for (let i = 0; i < data.results.length; i++) {
@@ -319,25 +526,53 @@ async function printgraph() {
           labels: category,
           datasets: [
             {
-              label: "Amount",
+              label: "Amount  ",
               data: value,
+              hoverBackgroundColor: ["#565656"],
               backgroundColor: [
-                "red",
-                "blue",
-                "yellow",
-                "green",
-                "purple",
+                "#2D728F",
+                "#C1FF9B",
+                "#6457A6",
+                "#FFACE4",
                 "orange",
-                "cyan",
-                "violet",
+                "teal",
+                "darkgray",
+                "#95B46A",
+                "blue",
+                "purple",
               ],
-              borderWidth: 3,
+              borderColor: "black",
+              borderWidth: 2,
             },
           ],
         },
 
         options: {
           responsive: false,
+
+          layout: {
+            padding: { top: 40, bottom: 60 },
+          },
+          plugins: {
+            tooltip: {
+              enabled: true,
+              backgroundColor: "black",
+            },
+            legend: {
+              labels: {
+                usePointStyle: true,
+              },
+              title: {
+                display: true,
+                text: "Monthly Category Wise Expences",
+              },
+              position: "top",
+            },
+            animation: {
+              duration: 9000,
+              easing: "easyInOutBounce",
+            },
+          },
         },
       });
     });
@@ -369,7 +604,7 @@ async function printgraph() {
     //read es .json
     .then((res) => res.json())
     .then((data) => {
-      console.log(data.results);
+      // console.log(data.results);
       let value = [];
       let date = [];
       for (let i = 0; i < data.results.length; i++) {
@@ -388,25 +623,55 @@ async function printgraph() {
           labels: date,
           datasets: [
             {
-              label: "Amount",
+              label: "Amount ",
               data: value,
-              backgroundColor: [
-                "red",
-                "blue",
-                "yellow",
-                "green",
-                "purple",
-                "orange",
-                "cyan",
-                "violet",
-              ],
-              borderWidth: 3,
+
+              backgroundColor: ["skyblue"],
+              borderColor: "#003366",
+              tension: 0.3,
+              fill: true,
             },
           ],
         },
 
         options: {
           responsive: false,
+
+          elements: {
+            point: {
+              pointRadius: 5.5,
+              pointHoverRadius: 10,
+              pointBackgroundColor: "pink",
+            },
+          },
+          animations: {
+            tension: {
+              duration: 1000,
+              easing: "linear",
+              from: 0.5,
+              to: 0.2,
+              loop: true,
+            },
+          },
+          layout: {
+            padding: { top: 40, bottom: 60 },
+          },
+          plugins: {
+            tooltip: {
+              enabled: true,
+              backgroundColor: "black",
+            },
+            legend: {
+              labels: {
+                usePointStyle: true,
+              },
+              title: {
+                display: true,
+                text: "Yearly Category Wise Expences",
+              },
+              position: "top",
+            },
+          },
         },
       });
     });
@@ -438,7 +703,7 @@ async function printgraph() {
     //read es .json
     .then((res) => res.json())
     .then((data) => {
-      console.log(data.results);
+      // console.log(data.results);
       let value = [];
       let category = [];
       for (let i = 0; i < data.results.length; i++) {
@@ -446,7 +711,6 @@ async function printgraph() {
         category.push(data.results[i]["category"]);
       }
       let ctx5 = document.getElementById("myChart6").getContext("2d");
-
       var graphie6 = Chart.getChart("myChart6");
       if (graphie6) {
         graphie6.destroy();
@@ -457,25 +721,53 @@ async function printgraph() {
           labels: category,
           datasets: [
             {
-              label: "Amount",
+              label: "Amount ",
               data: value,
-              backgroundColor: [
-                "red",
-                "blue",
-                "yellow",
-                "green",
-                "purple",
-                "orange",
-                "cyan",
-                "violet",
-              ],
-              borderWidth: 3,
+              backgroundColor: ["skyblue"],
+              borderColor: "#003366",
+              tension: 0.3,
+              fill: true,
             },
           ],
         },
 
         options: {
           responsive: false,
+          elements: {
+            point: {
+              pointRadius: 5.5,
+              pointHoverRadius: 10,
+              pointBackgroundColor: "pink",
+            },
+          },
+          animations: {
+            tension: {
+              duration: 1000,
+              easing: "linear",
+              from: 0.5,
+              to: 0.2,
+              loop: true,
+            },
+          },
+          layout: {
+            padding: { top: 50, bottom: 60 },
+          },
+          plugins: {
+            tooltip: {
+              enabled: true,
+              backgroundColor: "black",
+            },
+            legend: {
+              labels: {
+                usePointStyle: true,
+              },
+              title: {
+                display: true,
+                text: "Yearly Category Wise Expences",
+              },
+              position: "top",
+            },
+          },
         },
       });
     });

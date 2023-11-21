@@ -37,6 +37,9 @@
             $('#mytable1').DataTable();
         });
     </script>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
 </head>
 
 <body onload="getdata()">
@@ -69,6 +72,8 @@
                     <li><a href="/exchange"><img src="/images/exchange.png" alt="" height="35px"
                                 width="35px">Currency</a></li>
                     <li><a href="/jwellery"><img src="/images/diamond.png" alt="" height="35px" width="35px">Jewellery</a></li>
+                    <li><a href="/reminder"><img src="/images/bell.png" alt="" height="35px" width="35px">Reminder</a></li>
+
                     <li><a href="/report"><img src="/images/report.png" alt="" height="35px" width="35px">Report</a>
                     </li>
                     <li><a href="/contact"><img src="/images/support.png" alt="" height="35px" width="35px"></i>Contact
@@ -140,8 +145,8 @@
                                     <div class="col-md-6">
                                         <label for="mode" class="form-label">Mode</label>
                                         <select id="paymode" class="form-select" required>
-                                            <option selected>online</option>
-                                            <option>offline</option>
+                                            <option selected>Online</option>
+                                            <option>Cash</option>
                                         </select>
                                     </div>
                             <div class="modal-footer">
@@ -150,10 +155,10 @@
                             </div>
                         </form>
                             <div class="alert alert-success alert-dismissible fade show" role="alert" id="success" style="display: none;">
-          <strong id="successmsg">Holy guacamole!</strong>
-          <a href="/crypto">
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></a>
-        </div>
+                                <strong id="successmsg">Holy guacamole!</strong>
+                                <a href="/crypto">
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></a>
+                            </div>
                             </div>
                         </div>
 
@@ -242,10 +247,11 @@
                         </tr>
                     </thead>
                 </table>
-
+                <br>
+<hr style="border: 1px solid black;">
                 <div class="table2">
                     <div>
-                        <h1>Live Rates</h1>
+                        <h2>Live Rates</h2>
                     </div> 
                     <button type="button" name="myButton" class="button1" onclick="getcryptorate()">Get Live Rates</button>
                     <table class="table "id="mytable1" border="3px solid black">

@@ -75,6 +75,16 @@ router.get("/editTransaction", loggedin, (req, res) => {
     res.render("index");
   }
 });
+router.get("/group", loggedin, (req, res) => {
+  if (req.user) {
+    res.render("group", {
+      username: req.user.fullname,
+      email: req.user.email,
+    });
+  } else {
+    res.render("index");
+  }
+});
 router.get("/crypto", loggedin, (req, res) => {
   if (req.user) {
     res.render("crypto", {
@@ -119,6 +129,16 @@ router.get("/exchange", loggedin, (req, res) => {
 router.get("/report", loggedin, (req, res) => {
   if (req.user) {
     res.render("report", {
+      username: req.user.fullname,
+      email: req.user.email,
+    });
+  } else {
+    res.render("index");
+  }
+});
+router.get("/reminder", loggedin, (req, res) => {
+  if (req.user) {
+    res.render("reminder", {
       username: req.user.fullname,
       email: req.user.email,
     });

@@ -19,10 +19,12 @@
   <script src="https://kit.fontawesome.com/38fc30680a.js" crossorigin="anonymous"></script>
 
   <link rel="stylesheet" href="/CSS/userhome.css">
-
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
 </head>
-
-<body onload="liverates()">
+  
+<body onload="showdetails()">
   <div class="main-win">
     <div class="navbar">
       <h2 class="text-heading">Welcome to xLedger<br>
@@ -45,7 +47,8 @@
           <li><a href="/crypto"><img src="/images/bit-coin.png" alt="" height="35px" width="35px">Cryptos</a></li>
           <li><a href="/stocks"><img src="/images/line-chart.png" alt="" height="35px" width="35px">Stocks</a></li>
           <li><a href="/exchange"><img src="/images/exchange.png" alt="" height="35px" width="35px">Currency</a></li>
-          <li><a href="/jwellery"><img src="/images/diamond.png" alt="" height="35px" width="35px">Jwellery</a></li>
+          <li><a href="/jwellery"><img src="/images/diamond.png" alt="" height="35px" width="35px">Jewellery</a></li>
+          <li><a href="/reminder"><img src="/images/bell.png" alt="" height="35px" width="35px">Reminder</a></li>
           <li><a href="/report"><img src="/images/report.png" alt="" height="35px" width="35px">Report</a></li>
           <li><a href="/contact"><img src="/images/support.png" alt="" height="35px" width="35px"></i>Contact Us</a>
           </li>
@@ -55,34 +58,117 @@
       <div class="right-column container">
 
         <div class="row">
-          <div class="column" style="background-color:white">
+          {{!-- /// salery income  --}}
+          <div class="column" style="background-color:white;">
             <h2 class="new-1">Total Income</h2>
             <p>Monthly</p>
-            <h1 class="new-2" id="monthlyincome">2000000</h1>
+            <h1 class="new-2" >₹ <span id="monthlyincome">0.0</span></h1>
+            <!-- Button trigger modal -->
+            <div class="edit-icon">
+                <a data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  <img src="/images/edit.png" alt="" height="35px" width="35px" onclick="displayformincome()">
+                </a>
+            </div>
+          
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Total Monthly Income</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                    <form id="incomeform" onsubmit="return false;">
+                  <div class="modal-body">
+                    <div class="mb-3">
+                      <label for="income" class="form-label">Enter Your Monthly Income</label>
+                      <input type="number" class="form-control" id="editincome" style="border: 1px solid black;" required>
+                      <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+                    <button type="button" class="btn btn-color1 mx-2"  data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-color1 mx-2">Save Changes</button>
+                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                  </div>
+                  <div class="alert alert-success alert-dismissible fade show" role="alert" id="success" style="display: none;">
+                      <strong id="successmsg">Holy guacamole!</strong>
+                      <a href="/">
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></a>
+                  </div>
+                  </form>
+                </div>
+              </div>
+            </div>
           </div>
+
+          {{!-- target saving  --}}
           <div class="column" style="background-color:white;">
-            <h2 class="new-1">Saving Target</h2>
+            <h2 class="new-1">Expected Saving</h2>
             <p>Monthly</p>
-            <h1 class="new-2" id="savingtarget">2000000</h1>
+            <h1 class="new-2" >₹ <span id="expectedsaving">0.0</span></h1>
+            <!-- Button trigger modal -->
+            <div class="edit-icon">
+              <a data-bs-toggle="modal" data-bs-target="#Modal">
+                <img src="/images/edit.png" alt="" height="35px" width="35px" onclick="displayformsaving()">
+              </a>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Monthly Expected Saving</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <form id="savingupdate" onsubmit="return false;">
+                  <div class="modal-body">
+                    <div class="mb-3">
+                      <label for="saving" class="form-label">Enter Your Monthly Expected Saving</label>
+                      <input type="number" class="form-control" id="updsaving" style="border: 1px solid black;" required>
+                      <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-color1 mx-2"  data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-color1 mx-2">Save Changes</button>
+                  </div>
+                  <div class="alert alert-success alert-dismissible fade show" role="alert" id="success10" style="display: none;">
+                      <strong id="successmsg10">Holy guacamole !</strong>
+                      <a href="/">
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></a>
+                  </div>
+                  </form>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="column" style="background-color:white">
             <h2 class="new-1">Total Expenses</h2>
             <p>Monthly</p>
-            <h1 class="new-2" id="totalexpences">2000000</h1>
+            <h1 class="new-2" >₹ <span id="totalexpences">0.0</span></h1>
           </div>
-        </div>
+        
         <div class="row">
           <div class="column" style="background-color:white;">
             <h2 class="new-1">Total Saving</h2>
             <p>Monthly</p>
-            <h1 class="new-2">2000000</h1>
+            <div style="display: grid;justify-items: center">
+
+            <img src="/images/green.png" height="30px" id="greenimg" style="display: none;">
+            <h1 class="new-2" >₹ <span id="savingamount">0.0</span></h1>
+            <img src="/images/red.png" height="30px" id="redimg" style="display: none;">
+            </div>
           </div>
 
           <div class="column" style="background-color:white">
             <h2 class="new-1">Gold</h2>
             <p>( Per 10 grams )</p>
-            <h4 class="new-2">Live Rate : <span id="livegold">61700</span><sup style="color: red;">*</sup></h4>
-            <h4>Profit : 200</h4>
+            <h4 class="new-2">Live Rate : ₹ <span id="livegold">61700</span><sup style="color: red;">*</sup></h4>
+             <button class=" btn btn-color1 my-3" onclick="livegold()">Get live Rate</button>
              <br>
             <span class="error">*margin of error 1%</span>
           </div>
@@ -90,28 +176,38 @@
             <h2 class="new-1">Silver</h2>
             <p>( Per Kilograms )</p>
             <!-- <h1 >2000000</h1> -->
-            <h4 class="new-2">Live Rate : <span id="livesilver">70999</span><sup style="color: red;">*</sup></h4>
-            <h4>Profit : 200</h4>
-            <br>
+            <h4 class="new-2">Live Rate : ₹ <span id="livesilver">70999</span><sup style="color: red;">*</sup></h4>
+            <button class=" btn btn-color1 my-3" onclick="livesilver()">Get live Rate</button>
+             <br>
             <span class="error">*margin of error 1%</span>
 
           </div>
           <div class="row">
             <div class="column" style="background-color:white">
               <h2 class="new-1">Crypto Currency</h2>
-              <h4 class="new-2">Total Investment 3000</h4>
-              <h4>Net Profit : 200</h4>
+              <p class="new-2">Total Investment </p>
+              <h1 class="new-2">₹ <span id="cryptoamount"> 0.0</span></h1>
+              <a class="btn btn-color1 my-3" href="/crypto" role="button">Get
+            Live Rates</a>
+
             </div>
             <div class="column" style="background-color:white">
               <h2 class="new-1">Stocks</h2>
-              <h4 class="new-2">Total Investment 3000</h4>
-              <h4>Net Profit : 200</h4>
+              <p class="new-2">Total Investment </p>
+              <h1 class="new-2">₹ <span id="stocksamount">0.0</span></h1>
+              <a class="btn btn-color1 my-3" href="/stocks" role="button">Get
+            Live Rates</a>
+
             </div>
           </div>
         </div>
 
       </div>
       <script src="Javascript/userhome.js"></script>
+      <script src="Javascript/sendreminder.js"></script>
+        {{!-- <script>
+          sendnotification();
+        </script> --}}
 </body>
 
 </html>

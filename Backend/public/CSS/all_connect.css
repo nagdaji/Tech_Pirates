@@ -12,17 +12,20 @@ body {
   overflow: hidden;
 }
 #username {
-  font-size: 80%;
+  font-size: 70%;
+  font-family: "Playfair Display", serif;
 }
 #useremail {
   font-size: 110%;
   margin-right: 2%;
   color: white;
+  font-family: "Playfair Display", serif;
 }
 .text-heading {
   margin-left: 30px;
   text-align: left;
   color: white;
+  font-family: "Playfair Display", serif;
 }
 .user {
   margin-left: 30px;
@@ -80,14 +83,15 @@ body {
 }
 #hovering {
   padding-left: 30px;
+  padding-right: 12px;
   box-shadow: 3px 3px 3px gray;
 }
-.right-column::-webkit-scrollbar {
+/* .right-column::-webkit-scrollbar {
   display: none;
-}
+} */
 
 li {
-  padding: 10px;
+  padding-left: 10px;
   text-align: center;
   align-items: center;
   list-style: none;
@@ -132,4 +136,7 @@ ul li:hover a {
 img {
   margin-top: 5px;
   margin-left: 0px;
+}
+input {
+  border: 1px solid black;
 }

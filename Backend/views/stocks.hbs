@@ -15,7 +15,7 @@
     <script src="https://kit.fontawesome.com/e018de74d3.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
 
-   
+
     <link
         href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Montserrat:wght@100&family=Roboto:wght@300&family=Sacramento&display=swap"
         rel="stylesheet">
@@ -32,42 +32,59 @@
     <script>
 
         $(document).ready(function () {
-            $('#mytable').DataTable();
+            $('#mytable1').DataTable();
         });
     </script>
- <link rel="stylesheet" href="/CSS/all_connect.css">
+    <link rel="stylesheet" href="/CSS/all_connect.css">
     <link rel="stylesheet" href="/CSS/stocks.css">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body onload="getdata()">
     <div class="main-win">
         <div class="navbar">
             <h2 class="text-heading">Welcome to xLedger<br><span>
-          <h6 id="username">{{username}}</h6>
-        </span>
-      </h2>
-      <h3 id="useremail">user: <span id="pagemail">{{email}}</span></h3>
+                    <h6 id="username">{{username}}</h6>
+                </span>
+            </h2>
+            <h3 id="useremail">user: <span id="pagemail">{{email}}</span></h3>
 
         </div>
         <div class="contain">
             <div class="left-column sidebar">
                 <ul>
-                    <li><a href="/" class="first-block"><img src="/images/home-button.png" alt="" height="35px" width="35px">Home</a></li>
-                    <li><a href="/add_entry" ><img src="/images/add.png" alt="" height="35px" width="35px">Add Entry</a></li>
-                    <li><a href="/spending"><img src="/images/earnings.png" alt="" height="35px" width="35px">My Expenses</a></li>
-                    <li><a href="/group"><img src="/images/multiple-users-silhouette.png" alt="" height="35px" width="35px">Groups</a></li>
-                    <li><a href="/crypto"><img src="/images/bit-coin.png" alt="" height="35px" width="35px">Cryptos</a></li>
-                    <li><a href="/stocks" id="hovering"><img src="/images/line-chart.png" alt="" height="35px" width="35px">Stocks</a></li>
-                    <li><a href="/exchange"><img src="/images/exchange.png" alt="" height="35px" width="35px">Currency</a></li>
-                    <li><a href="/jwellery"><img src="/images/diamond.png" alt="" height="35px" width="35px">Jewellery</a></li>
-                    <li><a href="/report"><img src="/images/report.png" alt="" height="35px" width="35px">Report</a></li>
-                    <li><a href="/contact"><img src="/images/support.png" alt="" height="35px" width="35px"></i>Contact Us</a></li>
-                    <li><a href="/logout"><img src="/images/power.png" alt="" height="35px" width="35px"></i>Logout</a></li>
+                    <li><a href="/" class="first-block"><img src="/images/home-button.png" alt="" height="35px"
+                                width="35px">Home</a></li>
+                    <li><a href="/add_entry"><img src="/images/add.png" alt="" height="35px" width="35px">Add Entry</a>
+                    </li>
+                    <li><a href="/spending"><img src="/images/earnings.png" alt="" height="35px" width="35px">My
+                            Expenses</a></li>
+                    <li><a href="/group"><img src="/images/multiple-users-silhouette.png" alt="" height="35px"
+                                width="35px">Groups</a></li>
+                    <li><a href="/crypto"><img src="/images/bit-coin.png" alt="" height="35px" width="35px">Cryptos</a>
+                    </li>
+                    <li><a href="/stocks" id="hovering"><img src="/images/line-chart.png" alt="" height="35px"
+                                width="35px">Stocks</a></li>
+                    <li><a href="/exchange"><img src="/images/exchange.png" alt="" height="35px"
+                                width="35px">Currency</a></li>
+                    <li><a href="/jwellery"><img src="/images/diamond.png" alt="" height="35px"
+                                width="35px">Jewellery</a></li>
+                    <li><a href="/reminder"><img src="/images/bell.png" alt="" height="35px" width="35px">Reminder</a>
+                    </li>
+                    <li><a href="/report"><img src="/images/report.png" alt="" height="35px" width="35px">Report</a>
+                    </li>
+                    <li><a href="/contact"><img src="/images/support.png" alt="" height="35px" width="35px"></i>Contact
+                            Us</a></li>
+                    <li><a href="/logout"><img src="/images/power.png" alt="" height="35px" width="35px"></i>Logout</a>
+                    </li>
                     <!-- <li><a href="#"><i class="far fa-envelope"></i>Contact</a></li> -->
                 </ul>
             </div>
             <div class="right-column container">
-                <button type="button" class="btn btn-color1 my-5 btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <button type="button" class="btn btn-color1 my-3 btn-lg" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal">
                     Add Entry
                 </button>
 
@@ -82,135 +99,176 @@
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form class="row g-3">
+                                <form class="row g-3" id="form" onsubmit="return false;">
                                     <div class="col-md-6">
-                                      <label for="date" class="form-label">Date</label>
-                                      <input type="date" class="form-control" id="date">
+                                        <label for="date" class="form-label">Date</label>
+                                        <input type="date" class="form-control" id="date" required>
                                     </div>
                                     <div class="col-md-6">
                                         <label for="Category" class="form-label">Category</label>
                                         <!-- <input type="Category" class="form-control" id="inputPassword4"> -->
                                         <select id="Category" class="form-select">
-                                          <!-- <option selected>Choose...</option> -->
-                                          <option selected>Stocks</option>
-                        
+                                            <!-- <option selected>Choose...</option> -->
+                                            <option selected>Stocks</option required>
+
                                         </select>
-                                      </div>
+                                    </div>
                                     <div class="col-md-6">
-                                      <label for="type" class="form-label">Name</label>
-                                      <!-- <input type="Category" class="form-control" id="inputPassword4"> -->
-                                      <select id="type" class="form-select">
-                                        <!-- <option >Choose...</option> -->
-                                        <option selected>Reliance</option>
-                                   
-                                      </select>
+                                        <label for="type" class="form-label">Name</label>
+                                        <!-- <input type="Category" class="form-control" id="inputPassword4"> -->
+                                        <select id="type" class="form-select">
+                                            <!-- <option >Choose...</option> -->
+                                            <option selected>Reliance</option required>
+
+                                        </select>
                                     </div>
                                     <div class="col-md-6">
                                         <label for="unit" class="form-label">Quantity</label>
-                                        <input type="number" class="form-control" id="unit" >
-                                      </div>
-
-                                      <div class="col-md-6">
-                                        <label for="amount" class="form-label">Amount</label>
-                                        <input type="text" class="form-control" id="amount">
-                                      </div>
-                                    <div class="col-md-6">
-                                      <label for="remarks" class="form-label">Remarks</label>
-                                      <input type="text" class="form-control" id="remarks">
+                                        <input type="number" class="form-control" id="unit" required>
                                     </div>
-                                                                      
+
+                                    <div class="col-md-6">
+                                        <label for="amount" class="form-label">Amount</label>
+                                        <input type="text" class="form-control" id="amount" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="remarks" class="form-label">Remarks</label>
+                                        <input type="text" class="form-control" id="remarks" required>
+                                    </div>
+
                                     <div class="col-md-6">
                                         <label for="mode" class="form-label">Mode</label>
                                         <!-- <input type="Category" class="form-control" id="inputPassword4"> -->
-                                        <select id="mode" class="form-select">
-                                          <!-- <option >Choose...</option> -->
-                                          <option selected>online</option>
-                                          <option>offline</option>
-                                          
+                                        <select id="mode" class="form-select" required>
+                                            <!-- <option >Choose...</option> -->
+                                            <option selected>Online</option>
+                                            <option>Cash</option>
+
                                         </select>
-                                      </div>
-                    
-<!--                      
+                                    </div>
+
+                                    <!--                      
                                     <div class="col-md-6 my-5 " >
                                       <button type="submit" class="btn btn-primary " style="width: 55%;">Add Entry</button>
                                     </div> -->
-                                  </form>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Add</button>
-                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                    <strong>Holy guacamole!</strong> You should check in on some of those fields below.
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                  </div>
+                                <button type="submit" class="btn btn-primary">Add</button>
                             </div>
+                            <div class="alert alert-success alert-dismissible fade show" role="alert" id="success"
+                                style="display: none;">
+                                <strong id="successmsg">Holy guacamole !</strong>
+                                <a href="/stocks">
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button></a>
+                            </div>
+                            </form>
                         </div>
-                        
+
                     </div>
                 </div>
                 <div>
-                    <h1>Transaction History</h1>
-                 </div>
+                    <h3>Transaction History</h3>
+                </div>
 
                 <table class="table " id="mytable" border="3px solid black">
-                    <thead border="3px solid black" style="height: 51px;" >
-                        <tr >
-                            <th scope="col" style="text-align: center; background:rgb(0 51 102 / 93%); color:rgb(255, 255, 255);">S.no</th>
-                            <th scope="col" style="text-align: center;background:rgb(0 51 102 / 93%); color:rgb(255, 255, 255);" class="tablehead">Date</th>
-                            <th scope="col" style="text-align: center;background:rgb(0 51 102 / 93%); color:rgb(255, 255, 255);" class="tablehead">Name</th>
-                            <th scope="col" style="text-align: center;background:rgb(0 51 102 / 93%); color:rgb(255, 255, 255);" class="tablehead">Category</th>
-                            <th scope="col" style="text-align: center;background:rgb(0 51 102 / 93%); color:rgb(255, 255, 255);" class="tablehead">Quantity</th>
-                            <th scope="col" style="text-align: center;background:rgb(0 51 102 / 93%); color:rgb(255, 255, 255);" class="tablehead">Remarks</th>
-                            <th scope="col" style="text-align: center;background:rgb(0 51 102 / 93%); color:rgb(255, 255, 255);" class="tablehead">Mode of payment</th>
-                            <th scope="col" style="text-align: center;background:rgb(0 51 102 / 93%); color:rgb(255, 255, 255);" class="tablehead">Amonut</th>
-                            <th scope="col" style="text-align: center;background:rgb(0 51 102 / 93%); color:rgb(255, 255, 255);" class="tablehead">Profit/Loss</th>
+                    <thead border="3px solid black" style="height: 51px;">
+                        <tr>
+                            <th scope="col"
+                                style="text-align: center; background:rgb(0 51 102 / 93%); color:rgb(255, 255, 255);">
+                                S.no</th>
+                            <th scope="col"
+                                style="text-align: center;background:rgb(0 51 102 / 93%); color:rgb(255, 255, 255);"
+                                class="tablehead">Date</th>
+                            <th scope="col"
+                                style="text-align: center;background:rgb(0 51 102 / 93%); color:rgb(255, 255, 255);"
+                                class="tablehead">Name</th>
+                            <th scope="col"
+                                style="text-align: center;background:rgb(0 51 102 / 93%); color:rgb(255, 255, 255);"
+                                class="tablehead">Category</th>
+                            <th scope="col"
+                                style="text-align: center;background:rgb(0 51 102 / 93%); color:rgb(255, 255, 255);"
+                                class="tablehead">Quantity</th>
+                            <th scope="col"
+                                style="text-align: center;background:rgb(0 51 102 / 93%); color:rgb(255, 255, 255);"
+                                class="tablehead">Remarks</th>
+                            <th scope="col"
+                                style="text-align: center;background:rgb(0 51 102 / 93%); color:rgb(255, 255, 255);"
+                                class="tablehead">Mode of payment</th>
+                            <th scope="col"
+                                style="text-align: center;background:rgb(0 51 102 / 93%); color:rgb(255, 255, 255);"
+                                class="tablehead">Amonut</th>
+                            <th scope="col"
+                                style="text-align: center;background:rgb(0 51 102 / 93%); color:rgb(255, 255, 255);"
+                                class="tablehead">Profit/Loss</th>
                         </tr>
                     </thead>
                     <tbody id="output"></tbody>
                 </table>
                 <table class="table table-primary" border="3px solid black" style="background-color: black;">
-                        <thead border="3px solid black;" style="height: 51px;font-size:larger">
+                    <thead border="3px solid black;" style="height: 51px;font-size:larger">
                         <tr border="3px solid black;">
-                            <th scope="col" style="text-align: center; background:rgb(0 51 102 / 93%); color:white">Grand Total </th>
+                            <th scope="col" style="text-align: center; background:rgb(0 51 102 / 93%); color:white">
+                                Grand Total </th>
                             <th scope="col" style="text-align: center;background:rgb(0 51 102 / 93%); color:white"></th>
                             <th scope="col" style="text-align: center;background:rgb(0 51 102 / 93%); color:white"></th>
                             <th scope="col" style="text-align: center;background:rgb(0 51 102 / 93%); color:white"></th>
                             <th scope="col" style="text-align: center;background:rgb(0 51 102 / 93%); color:white"></th>
                             <th scope="col" style="text-align: center;background:rgb(0 51 102 / 93%); color:white"></th>
                             <th scope="col" style="text-align: center;background:rgb(0 51 102 / 93%); color:white"></th>
-                            <th scope="col" style="text-align: center;background:rgb(0 51 102 / 93%); color:white">₹ <span id="grandtotal">0.0</span> </th>
+                            <th scope="col" style="text-align: center;background:rgb(0 51 102 / 93%); color:white">₹
+                                <span id="grandtotal">0.0</span> </th>
                             <th scope="col" style="text-align: center;background:rgb(0 51 102 / 93%); color:white"></th>
                         </tr>
                     </thead>
                 </table>
-                
+<br>
+<hr style="border: 1px solid black;">
                 <div class="table2">
                     <div>
-                       <h1>Live Rates</h1>
+                        <h2>Live Rates</h2>
                     </div>
-                <table class="table " id="mytable1" border="3px solid black">
-                    <thead border="3px solid black" style="height: 51px;" >
-                        <tr >
-                            <th scope="col" style="text-align: center; background:rgb(0 51 102 / 93%); color:rgb(255, 255, 255);">S.no</th>
-                            <!-- <th scope="col" style="text-align: center;background:rgb(0 51 102 / 93%); color:rgb(255, 255, 255);" class="tablehead">Date</th> -->
-                            <th scope="col" style="text-align: center;background:rgb(0 51 102 / 93%); color:rgb(255, 255, 255);" class="tablehead">Name</th>
-                            <th scope="col" style="text-align: center;background:rgb(0 51 102 / 93%); color:rgb(255, 255, 255);" class="tablehead">Live Rates</th>
-                            <!-- <th scope="col" style="text-align: center;background:rgb(0 51 102 / 93%); color:rgb(255, 255, 255);" class="tablehead">Quantity</th> -->
-                            <!-- <th scope="col" style="text-align: center;background:rgb(0 51 102 / 93%); color:rgb(255, 255, 255);" class="tablehead">Remarks</th> -->
-                            <!-- <th scope="col" style="text-align: center;background:rgb(0 51 102 / 93%); color:rgb(255, 255, 255);" class="tablehead">Mode of payment</th>
-                            <th scope="col" style="text-align: center;background:rgb(0 51 102 / 93%); color:rgb(255, 255, 255);" class="tablehead">Amonut</th>
-                            <th scope="col" style="text-align: center;background:rgb(0 51 102 / 93%); color:rgb(255, 255, 255);" class="tablehead">Profit/Loss</th> -->
-                        </tr>
-                    </thead>
+                    <button type="button" name="myButton" class="btn btn-color1 my-3" onclick="getstocksrate()">Get Live
+                        Rates</button>
+
+                    <table class="table " id="mytable1" border="3px solid black">
+                        <thead border="3px solid black" style="height: 51px;">
+                            <tr>
+                                <th scope="col"
+                                    style="text-align: center; background:rgb(0 51 102 / 93%); color:rgb(255, 255, 255);">
+                                    S.no</th>
+                                <!-- <th scope="col" style="text-align: center;background:rgb(0 51 102 / 93%); color:rgb(255, 255, 255);" class="tablehead">Date</th> -->
+                                <th scope="col"
+                                    style="text-align: center;background:rgb(0 51 102 / 93%); color:rgb(255, 255, 255);"
+                                    class="tablehead">Name</th>
+                                <th scope="col"
+                                    style="text-align: center;background:rgb(0 51 102 / 93%); color:rgb(255, 255, 255);"
+                                    class="tablehead">Open</th>
+                                <th scope="col"
+                                    style="text-align: center;background:rgb(0 51 102 / 93%); color:rgb(255, 255, 255);"
+                                    class="tablehead">High</th>
+                                <th scope="col"
+                                    style="text-align: center;background:rgb(0 51 102 / 93%); color:rgb(255, 255, 255);"
+                                    class="tablehead">Low</th>
+                                <th scope="col"
+                                    style="text-align: center;background:rgb(0 51 102 / 93%); color:rgb(255, 255, 255);"
+                                    class="tablehead">Close</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
                         <tr>
                             <td>1</td>
-                            <td>Reliance</td>
-                            <td id="liverate">....</td>
+                            <td>Reliance.BSE</td>
+                            <td id="open">....</td>
+                            <td id="high">....</td>
+                            <td id="low">....</td>
+                            <td id="close">....</td>
                         </tr>
-                        
-                    <tbody id="output"></tbody>
-                </table>
-            </div>
+                        </tbody>
+                    </table>
+                </div>
 
 
 
@@ -219,7 +277,7 @@
             </div>
 
         </div>
-
+        <script src="/Javascript/stocks.js"></script>
 </body>
 
 </html>

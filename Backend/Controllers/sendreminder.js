@@ -43,8 +43,8 @@ const sendreminder = async (req, res) => {
             body: ` ${
               i + 1
             }.\nYou have a Due Payment for : \nCategory : ${msgcategory} ( ${msgremark} ) \nDate : ${formattedDate} Time : ${formattedDateTime} \nAmount : ${msgamount}`,
-            from: "whatsapp:+14155238886",
-            to: "whatsapp:+917869789082",
+            from: "whatsapp:+",
+            to: "whatsapp:+",
           })
           .then((message) => console.log("Message Sent Successfully"));
         // .done();

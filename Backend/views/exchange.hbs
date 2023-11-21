@@ -78,6 +78,9 @@
             border: 1px solid black;
         }
     </style>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/CSS/all_connect.css">
 </head>
 
@@ -85,10 +88,10 @@
     <div class="main-win">
         <div class="navbar">
             <h2 class="text-heading">Welcome to xLedger<br><span>
-          <h6 id="username">{{username}}</h6>
-        </span>
-      </h2>
-      <h3 id="useremail">user: <span id="pagemail">{{email}}</span></h3>
+                    <h6 id="username">{{username}}</h6>
+                </span>
+            </h2>
+            <h3 id="useremail">user: <span id="pagemail">{{email}}</span></h3>
 
         </div>
         <div class="contain">
@@ -96,22 +99,32 @@
                 <ul>
                     <li><a href="/" class="first-block"><img src="/images/home-button.png" alt="" height="35px"
                                 width="35px">Home</a></li>
-                    <li><a href="/add_entry"><img src="/images/add.png" alt="" height="35px" width="35px">Add Entry</a></li>
-                    <li><a href="/spending"><img src="/images/earnings.png" alt="" height="35px" width="35px">My Expenses</a>
+                    <li><a href="/add_entry"><img src="/images/add.png" alt="" height="35px" width="35px">Add Entry</a>
+                    </li>
+                    <li><a href="/spending"><img src="/images/earnings.png" alt="" height="35px" width="35px">My
+                            Expenses</a>
                     </li>
                     <li><a href="/group"><img src="/images/multiple-users-silhouette.png" alt="" height="35px"
                                 width="35px">Groups</a></li>
                     <li><a href="/crypto"><img src="/images/bit-coin.png" alt="" height="35px" width="35px">Cryptos</a>
                     </li>
-                    <li><a href="/stocks"><img src="/images/line-chart.png" alt="" height="35px" width="35px">Stocks</a></li>
-                    <li><a href="/exchange" id="hovering"><img src="/images/exchange.png" alt="" height="35px" width="35px">Currency</a>
+                    <li><a href="/stocks"><img src="/images/line-chart.png" alt="" height="35px" width="35px">Stocks</a>
                     </li>
-                    <li><a href="/jwellery"><img src="/images/diamond.png" alt="" height="35px" width="35px">Jewellery</a></li>
+                    <li><a href="/exchange" id="hovering"><img src="/images/exchange.png" alt="" height="35px"
+                                width="35px">Currency</a>
+                    </li>
+                    <li><a href="/jwellery"><img src="/images/diamond.png" alt="" height="35px"
+                                width="35px">Jewellery</a></li>
+                    <li><a href="/reminder"><img src="/images/bell.png" alt="" height="35px" width="35px">Reminder</a>
+                    </li>
 
-                    <li><a href="/report"><img src="/images/report.png" alt="" height="35px" width="35px">Report</a></li>
-                    <li><a href="/contact"><img src="/images/support.png" alt="" height="35px" width="35px"></i>Contact Us</a>
+                    <li><a href="/report"><img src="/images/report.png" alt="" height="35px" width="35px">Report</a>
                     </li>
-                    <li><a href="/logout"><img src="/images/power.png" alt="" height="35px" width="35px"></i>Logout</a></li>
+                    <li><a href="/contact"><img src="/images/support.png" alt="" height="35px" width="35px"></i>Contact
+                            Us</a>
+                    </li>
+                    <li><a href="/logout"><img src="/images/power.png" alt="" height="35px" width="35px"></i>Logout</a>
+                    </li>
                     <!-- <li><a href="#"><i class="far fa-envelope"></i>Contact</a></li> -->
                 </ul>
             </div>
@@ -132,74 +145,64 @@
                         <input type="text" class="form-control" id="amount">
                       </div>
                       </form> -->
+                      <form onsubmit="return false;"  id="convert">
                     <div class="size">
                         <div class="from">
                             <label for="from" class="form-label">From</label><br>
                             <!-- <input type="number" class="form-control" id="from-convert" -->
-                                <!-- style="border: 1px solid black;"> -->
-                                <select id="from-convert" class="form-select">
-                                    <option value=""><span id="AED"></span>United Arab Emirates Dirham</option>
-                                    <option value=""><span id="ARS"></span>Argentine Peso</option>
-                                    <option value=""><span id="AUD"></span>Australian Dollar</option>
-                                    <option value=""><span id="GBP"></span>British Pound Sterling</option>
-                                    <option value=""><span id="BRL"></span>Brazilian Real</option>
-                                    <option value=""><span id="ILS"></span>Israeli New Shekel</option>
-                                    <option value=""><span id="CAD"></span>Canadian Dollar</option>
-                                    <option value=""><span id="CHF"></span>Swiss Franc</option>
-                                    <option value=""><span id="INR"></span>Indian Rupee</option>
-                                    <option value=""><span id="CNY"></span>Chinese Yuan</option>
-                                    <option value=""><span id="JPY"></span>Japanese Yen</option>
-                                    <option value=""><span id="RUB"></span>Russian Ruble</option>
-                                    <option value=""><span id="SGD"></span>Singapore Dollar</option>
-                                    <option value=""><span id="EUR"></span>Euro</option>
-                                    <option selected><span id="USD"></span>United States Dollar</option>
-                                  </select>
+                            <!-- style="border: 1px solid black;"> -->
+                            <select id="from-convert" class="form-select">
+                                <option selected>United States Dollar</option>
+                                <option>United Arab Dirham</option>
+                                <option>Argentine Peso</option>
+                                <option>Australian Dollar</option>
+                                <option>British Pound Sterling</option>
+                                <option>Brazilian Real</option>
+                                <option>Israeli New Shekel</option>
+                                <option>Canadian Dollar</option>
+                                <option>Swiss Franc</option>
+                                <option>Chinese Yuan</option>
+                                <option>Japanese Yen</option>
+                                <option>Russian Ruble</option>
+                                <option>Singapore Dollar</option>
+                                <option>Pakistani Rupee</option>
+                                <option>Bangladeshi taka</option>
+                                <option>Nepalese rupee</option>
+                                <option>Sri Lankan rupee</option>
+                                <option>Bhutanese Ngultrum</option>
+                                <option>Indian Rupee</option>
+                            </select>
                         </div>
                         <div class="swap my-4">
                             <img src="/images/exchange.png" alt="" height="35px" width="35px">
                         </div>
                         <div class="to">
                             <label for="from" class="form-label">to</label><br>
-                            <!-- <input type="number" class="form-control" id="to-convert" style="border: 1px solid black;"> -->
-                            <!-- <select id="from-convert" class="form-select"> -->
-                                <select id="from-convert" class="form-select">
-                                    <option value="" selected><span id="INR"></span>Indian Rupee</option>
-                                    <option value=""><span id="AED"></span>United Arab Emirates Dirham</option>
-                                    <option value=""><span id="ARS"></span>Argentine Peso</option>
-                                    <option value=""><span id="AUD"></span>Australian Dollar</option>
-                                    <option value=""><span id="GBP"></span>British Pound Sterling</option>
-                                    <option value=""><span id="BRL"></span>Brazilian Real</option>
-                                    <option value=""><span id="ILS"></span>Israeli New Shekel</option>
-                                    <option value=""><span id="CAD"></span>Canadian Dollar</option>
-                                    <option value=""><span id="CHF"></span>Swiss Franc</option>
-                                    <option value=""><span id="CNY"></span>Chinese Yuan</option>
-                                    <option value=""><span id="JPY"></span>Japanese Yen</option>
-                                    <option value=""><span id="RUB"></span>Russian Ruble</option>
-                                    <option value=""><span id="SGD"></span>Singapore Dollar</option>
-                                    <option value=""><span id="EUR"></span>Euro</option>
-                                    <option><span id="USD"></span>United States Dollar</option>
-                                  </select>
+                            <select id="-convert" class="form-select">
+                                <option selected>Indian Rupee</option>
+                            </select>
                         </div>
                     </div>
                     <div class="size">
                         <div class="from">
                             <!-- <label for="from"  class="form-label">From</label><br> -->
-                            <input type="number" class="form-control" id="from-convert" >
-                           
+                            <input type="text" class="form-control" id="from-convert1" required>
+
                         </div>
                         <div class="swap">
-    <img src="/images/exchange.png" alt="" height="35px" width="35px">
+                            <img src="/images/exchange.png" alt="" height="35px" width="35px">
                         </div>
                         <div class="to">
                             <!-- <label for="from"  class="form-label">to</label><br> -->
-                            <input type="number" class="form-control" id="to-convert" >
+                            <input type="text" class="form-control" id="to-convert" disabled>
                         </div>
                     </div>
 
-                    <button type="button" class="btn btn-color1 my-3 btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <button type="Submit" class="btn btn-color1 my-3 btn-lg" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal">
                         convert
                     </button>
-
+                </form>
 
                 </div>
 
@@ -209,7 +212,7 @@
             </div>
 
         </div>
-
+        <script src="/Javascript/exchange.js"></script>
 </body>
 
 </html>

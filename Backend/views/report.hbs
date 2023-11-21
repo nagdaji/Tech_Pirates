@@ -71,9 +71,15 @@
             color: white;
             border: 1px solid black;
         }
+        hr{
+            border: 2px solid black;
+        }
     </style>
     <link rel="stylesheet" href="/CSS/all_connect.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
 
 </head>
 
@@ -90,50 +96,53 @@
         <div class="contain">
             <div class="left-column sidebar">
                 <ul>
-                    <li><a href="/" class="first-block"><img src="/images/home-button.png" alt="" height="35px"
-                                width="35px">Home</a></li>
-                    <li><a href="/add_entry"><img src="/images/add.png" alt="" height="35px" width="35px">Add Entry</a>
+                    <li><a href="/" class="first-block"><img src="/images/home-button.png" alt="" height="35px" width="35px">Home</a></li>
+                    <li><a href="/add_entry"><img src="/images/add.png" alt="" height="35px" width="35px">Add Entry</a></li>
+                    <li><a href="/spending"><img src="/images/earnings.png" alt="" height="35px" width="35px">My Expenses</a>
                     </li>
-                    <li><a href="/spending"><img src="/images/earnings.png" alt="" height="35px" width="35px">My
-                            Expenses</a>
-                    </li>
-                    <li><a href="/group"><img src="/images/multiple-users-silhouette.png" alt="" height="35px"
-                                width="35px">Groups</a></li>
-                    <li><a href="/crypto"><img src="/images/bit-coin.png" alt="" height="35px" width="35px">Cryptos</a>
-                    </li>
-                    <li><a href="/stocks"><img src="/images/line-chart.png" alt="" height="35px" width="35px">Stocks</a>
-                    </li>
-                    <li><a href="/exchange" ><img src="/images/exchange.png" alt="" height="35px"
-                                width="35px">Currency</a>
-                    </li>
-                    <li><a href="/jwellery"><img src="/images/diamond.png" alt="" height="35px"
-                                width="35px">Jewellery</a></li>
+                    <li><a href="/group"><img src="/images/multiple-users-silhouette.png" alt="" height="35px" width="35px">Groups</a></li>
+                    <li><a href="/crypto"><img src="/images/bit-coin.png" alt="" height="35px" width="35px">Cryptos</a></li>
+                    <li><a href="/stocks"><img src="/images/line-chart.png" alt="" height="35px" width="35px">Stocks</a></li>
+                    <li><a href="/exchange" ><img src="/images/exchange.png" alt="" height="35px" width="35px">Currency</a></li>
+                    <li><a href="/jwellery"><img src="/images/diamond.png" alt="" height="35px"width="35px">Jewellery</a></li>
+                    <li><a href="/reminder"><img src="/images/bell.png" alt="" height="35px" width="35px">Reminder</a></li>
 
-                    <li><a href="/report" id="hovering"><img src="/images/report.png" alt="" height="35px" width="35px">Report</a>
-                    </li>
-                    <li><a href="/contact"><img src="/images/support.png" alt="" height="35px" width="35px"></i>Contact
-                            Us</a>
-                    </li>
-                    <li><a href="/logout"><img src="/images/power.png" alt="" height="35px" width="35px"></i>Logout</a>
-                    </li>
+                    <li><a href="/report" id="hovering"><img src="/images/report.png" alt="" height="35px" width="35px">Report</a></li>
+                    <li><a href="/contact"><img src="/images/support.png" alt="" height="35px" width="35px"></i>Contact Us</a></li>
+                    <li><a href="/logout"><img src="/images/power.png" alt="" height="35px" width="35px"></i>Logout</a></li>
                     <!-- <li><a href="#"><i class="far fa-envelope"></i>Contact</a></li> -->
                 </ul>
             </div>
             <div class="right-column container">
-
+                <center>
+ {{!-- ======daily===== --}}
+ {{!-- <h5>Record Date Wise</h5> --}}
+                <form id="datesearch" onsubmit="return false;" class="row g-2"> 
+                    <div class="col-md-2 my-4" style="margin-left: 30%;">
+                            <input type="date" class="form-control" id="date1" required>
+                    </div>
+                    <div class="col-md-3 my-4" >
+                            <button type="submit" class="btn btn-color1" style="width: 55%;">Search by Date</button>
+                    </div>
+                </form>
+                 
+                <div>
+                    <canvas id="myChart" height="570vh" width="570vh"> </canvas>
+                </div>
                 {{!-- //// weekly //// --}}
                 {{!-- ====== Weekly Date wise ======= --}}
-                <center>
+                <hr>
                     <h2>Weekly Record Date Wise</h2>
                 <div>
-                    <canvas id="myChart1" height="500vh" width="800vh"> </canvas>
+                    <canvas id="myChart1" height="620vh" width="1000vh"> </canvas>
                 </div>
+                <hr>
                     <h2>Weekly Record Category Wise</h2>
                 {{!-- ====== Weekly category Wise ======= --}}
                 <div>
-                    <canvas id="myChart2" height="500vh" width="800vh"> </canvas>
+                    <canvas id="myChart2" height="620vh" width="1000vh"> </canvas>
                 </div>
-
+<hr>
 
                 {{!-- ------- Monthly ------- --}}
 
@@ -141,36 +150,28 @@
 
                     <h2>Monthly Record Date Wise</h2>
                 <div>
-                    <canvas id="myChart3" height="500vh" width="800vh"> </canvas>
+                    <canvas id="myChart3" height="620vh" width="1000vh"> </canvas>
                 </div>
                 {{!-- ------monthly category wise  --}}
-
+<hr>
                     <h2>Monthly Record Category Wise</h2>
                 <div>
-                    <canvas id="myChart4" height="500vh" width="800vh"> </canvas>
+                    <canvas id="myChart4" height="620vh" width="1000vh"> </canvas>
                 </div>
                 {{!-- ------Yearly date wise  --}}
-
+<hr>
                     <h2>Yearly Record Date Wise</h2>
                 <div>
-                    <canvas id="myChart5" height="500vh" width="900vh"> </canvas>
+                    <canvas id="myChart5" height="620vh" width="1000vh"> </canvas>
                 </div>
                 {{!-- ------monthly category wise  --}}
-
+<hr>
                     <h2>Yearly Record Category Wise</h2>
                 <div>
-                    <canvas id="myChart6" height="500vh" width="900vh"> </canvas>
+                    <canvas id="myChart6" height="620vh" width="1000vh"> </canvas>
                 </div>
-                {{!-- ======daily===== --}}
-
-                <form id="datesearch" onsubmit="return false;">               
-                 <input type="date" name="date" id="date1" required>
-                <button type="submit">search</button>
-                </form>
-
-                <div>
-                    <canvas id="myChart" height="500vh" width="800vh"> </canvas>
-                </div>
+                    <hr>
+               
 
                 </center>
             </div>

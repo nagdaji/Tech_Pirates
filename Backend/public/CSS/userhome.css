@@ -15,6 +15,7 @@ body {
   margin-left: 30px;
   text-align: left;
   color: white;
+  font-family: "Playfair Display", serif;
 }
 .user {
   margin-left: 30px;
@@ -70,9 +71,9 @@ body {
   overflow: scroll;
   padding-bottom: 100px;
 }
-.right-column::-webkit-scrollbar {
+/* .right-column::-webkit-scrollbar {
   display: none;
-}
+} */
 
 /* .sidebar header{
    font-size:22px;
@@ -83,15 +84,17 @@ body {
    user-select: none;
 } */
 #username {
-  font-size: 80%;
+  font-size: 70%;
+  font-family: "Playfair Display", serif;
 }
 #useremail {
   font-size: 110%;
   margin-right: 2%;
   color: white;
+  font-family: "Playfair Display", serif;
 }
 li {
-  padding: 10px;
+  padding-left: 10px;
   text-align: center;
   align-items: center;
   list-style: none;
@@ -131,6 +134,7 @@ ul li:hover a {
 }
 #hovering {
   padding-left: 30px;
+  padding-right: 12px;
   box-shadow: 3px 3px 3px gray;
 }
 .sidebar ul a img {
@@ -145,8 +149,11 @@ img {
   margin-top: 2rem;
   margin-left: 5rem;
   float: left;
-  border-radius: 40px;
+  border-radius: 12px;
+  border: 1px solid #003366;
   width: 25%;
+  box-shadow: 1px 1px 4px #000000;
+
   padding: 10px;
   height: 270px; /* Should be removed. Only for demonstration */
 }
@@ -169,10 +176,26 @@ img {
 }
 .new-2 {
   color: #003366;
-  margin-top: 10%;
 }
 
 .error {
   font-size: xx-small;
   color: #003366;
+}
+.edit-icon {
+  padding-left: 250px;
+}
+.btn-color1:hover {
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+}
+
+.btn-color1 {
+  background-color: #003366;
+  color: white;
+  border: 1px solid black;
+}
+input {
+  border: 1px solid black;
 }

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reminder</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+
+    <script src="https://kit.fontawesome.com/e018de74d3.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/38fc30680a.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"
+        integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+
+
+
+    <link rel="stylesheet" href="/CSS/all_connect.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+    <style>
+        .btn-color1:hover {
+            color: black;
+            background-color: white;
+            border: 1px solid black
+        }
+
+        .btn-color1 {
+            background-color: #003366;
+            color: white;
+            border: 1px solid black;
+        }
+
+        .right-column {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .card {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+            margin: 20px;
+            box-sizing: border-box;
+            width: calc(28.33% - 20px);
+            /* Calculate the width to fit 3 cards in a row with some margin */
+            display: inline-block;
+            vertical-align: top;
+            border: 0.7px solid #003366;
+
+            box-shadow: 1px 1px 7px #000000;
+
+        }
+
+        /* Clear any extra white space from inline-block elements */
+        .card-container::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .category {
+            color: #003366;
+
+        }
+
+        .date {
+            color: #003366;
+            /* font-weight: 500; */
+            font-size:medium;
+        }
+    </style>
+
+</head>
+
+<body onload="printreminder()">
+    <div class="main-win">
+        <div class="navbar">
+            <h2 class="text-heading">Welcome to xLedger<br><span>
+                    <h6 id="username">{{username}}</h6>
+                </span>
+            </h2>
+            <h3 id="useremail">user:<span id="pagemail">{{email}}</span> </h3>
+
+
+        </div>
+        <div class="contain">
+            <div class="left-column sidebar">
+                <ul>
+                    <li><a href="/" class="first-block"><img src="/images/home-button.png" alt="" height="35px"
+                                width="35px">Home</a></li>
+                    <li><a href="/add_entry"><img src="/images/add.png" alt="" height="35px" width="35px">Add Entry</a>
+                    </li>
+                    <li><a href="/spending"><img src="/images/earnings.png" alt="" height="35px" width="35px">My
+                            Expenses</a></li>
+                    <li><a href="/group"><img src="/images/multiple-users-silhouette.png" alt="" height="35px"
+                                width="35px">Groups</a></li>
+                    <li><a href="/crypto"><img src="/images/bit-coin.png" alt="" height="35px"
+                                width="35px">Cryptos</a></li>
+                    <li><a href="/stocks"><img src="/images/line-chart.png" alt="" height="35px" width="35px">Stocks</a>
+                    </li>
+                    </li>
+                    <li><a href="/exchange"><img src="/images/exchange.png" alt="" height="35px"
+                                width="35px">Currency</a>
+                    </li>
+                    <li><a href="/jwellery"><img src="/images/diamond.png" alt="" height="35px"
+                                width="35px">Jewellery</a></li>
+                    <li><a href="/reminder" id="hovering"><img src="/images/bell.png" alt="" height="35px"
+                                width="35px">Reminder</a></li>
+                    <li><a href="/report"><img src="/images/report.png" alt="" height="35px" width="35px">Report</a>
+                    </li>
+                    </li>
+                    <li><a href="/contact"><img src="/images/support.png" alt="" height="35px" width="35px">Contact
+                            Us</a></li>
+                    <li><a href="/login"><img src="/images/power.png" alt="" height="35px" width="35px">Logout</a></li>
+                    <!-- <li><a href="#"><i class="far fa-envelope"></i>Contact</a></li> -->
+                </ul>
+            </div>
+            <div class="right-column container">
+
+
+
+
+
+                <button type="button" class="btn btn-color1 my-3 btn-lg" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal">
+                    Set Reminder
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Add Reminder</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert" id="error"
+                                        style="display: none;">
+                                        <strong id="errormsg">Holy guacamole !</strong>
+                                            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                            </div>
+                                <div class="modal-body">
+                            <form class="row g-3" id="reminderform" onsubmit="return false;">
+                                    <div class="col-md-6">
+                                        <label for="date" class="form-label">Due Date</label>
+                                        <input type="datetime-local" class="form-control" id="datetime" required onchange="checkdate()">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="Category" class="form-label">Category</label>
+                                        <!-- <input type="Category" class="form-control" id="inputPassword4"> -->
+                                        <select id="Category" class="form-select" required>
+                                            <option selected>Bills</option>
+                                            <option >Installment</option>
+                                            <option>Food</option>
+                                            <option>Travel</option>
+                                            <option>Shopping</option>
+                                            <option>Investment</option>
+                                            <option>Crypto Currency</option>
+                                            <option>Gold</option>
+                                            <option>Silver</option>
+                                            <option>Stocks</option>
+                                            <option>Misellenous</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="remarks" class="form-label">Remarks</label>
+                                        <input type="text" class="form-control" id="remarks" required>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label for="amount" class="form-label">Amount</label>
+                                        <input type="text" class="form-control" id="amount" required>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-color1" data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-color1">Set Reminder</button>
+                                </div>
+                                <div class="alert alert-success alert-dismissible fade show" role="alert" id="success"
+                                        style="display: none;">
+                                        <strong id="successmsg">Holy guacamole !</strong>
+                                        <a href="/reminder">
+                                            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button></a>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+                <div>
+                    <h2>My Reminders</h2>
+                </div>
+                <hr>
+                <div class="card-container" id="output">
+                    <!-- Card 1 -->
+                    <div class="card">
+                        <h2 class="category"><b></b></h2>
+                        <p id="remark"><i>No Saved Reminder</i></p>
+                        <div class=" gap-2 mb-2">
+                        </div>
+                    </div>
+                    {{!-- <div class="card">
+                        <h2 class="category"><b>Bills</b></h2>
+                        <p class="date">Due<span id="duedate">12/08/23,</span>&emsp13;<span id="time">23:05 IST</span></p>
+
+                        <p id="remark"><i>Electricity bill of home 1</i></p>
+                        <h2 class="mb-3 category"><b>₹<span> 1000</span></b></h2>
+                        <div class=" gap-2 mb-2">
+                            <button class="btn btn-color1" type="button">Delete Reminder</button>
+                        </div>
+                    </div> --}}
+                </div>
+
+
+            </div>
+
+        </div>
+            <script src="/Javascript/reminder.js"></script>
+</body> 
+
+</html>
