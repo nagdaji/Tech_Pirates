@@ -156,5 +156,7 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 router.get("/logout", logout);
-
+router.get("/*", (req, res) => {
+  res.render("notfound");
+});
 module.exports = router;
