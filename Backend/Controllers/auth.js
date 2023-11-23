@@ -32,6 +32,9 @@ const printgroups = require("./printgroups");
 const countMembers = require("./countMembers");
 const getcreatorname = require("./getcreatorname");
 const showeditmodal = require("./showeditmodal");
+const deletegroupmember = require("./deletegroupmember");
+const insertgrouptransaction = require("./insertgrouptransaction");
+const Printgrouptransaction = require("./Printgrouptransaction");
 
 router.post("/register", register);
 router.post("/login", login);
@@ -65,5 +68,8 @@ router.post("/printgroups", printgroups);
 router.post("/countMembers", countMembers);
 router.post("/getcreatorname", getcreatorname);
 router.post("/showeditmodal", showeditmodal);
+router.post("/deletegroupmember", deletegroupmember);
+router.post("/insertgrouptransaction", insertgrouptransaction);
+router.post("/Printgrouptransaction", Printgrouptransaction);
 
 module.exports = router;

@@ -3,7 +3,7 @@ const countMembers = async (req, res) => {
   const groupname = req.body.groupname;
 
   const sql = `SELECT COUNT(groupname) AS count FROM groupinfo 
-  WHERE groupname='${groupname}'
+  WHERE groupname="${groupname}"
   `;
   db.query(sql, (err, results) => {
     if (err) throw err;

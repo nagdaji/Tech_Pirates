@@ -13,7 +13,7 @@ const addmember = async (req, res) => {
     if (err) throw err;
     const grpname = result[0].groupname;
 
-    const sql = `INSERT INTO groupinfo (memberid, groupcode, groupname,ownername) VALUES ('${mememail}', '${code}', '${grpname}','${email}')`;
+    const sql = `INSERT INTO groupinfo (memberid, groupcode, groupname, ownername) VALUES ("${mememail}", "${code}", "${grpname}","${email}")`;
     db.query(sql, async (err, results) => {
       if (err) throw err;
     });

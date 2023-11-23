@@ -25,12 +25,14 @@
     crossorigin="anonymous"></script>
 
   <!-- ======datatable==== -->
+    <link rel="icon" type="image/x-icon" href="/images/android-chrome-512x512.png" />
 
   <link rel="stylesheet" href="//cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
   <script src="//cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js"></script>
 </head>
 
 <body onload="getdata()">
@@ -192,6 +194,13 @@
           <a href="/spending"><button type="button" class="btn btn-color mx-2" id="reset"> Remove Filter</button></a>
         </div>
       </div>
+<figure style="float: right; cursor:pointer">
+  <img src="/images/file.png" onclick="exportcsv()" alt="Trulli" height="60em">
+  <figcaption class="mx-3">Export</figcaption>
+</figure>
+
+        {{!-- <h5 style="float: right; cursor:pointer" class="">Export</h5>
+       <img src="" onclick="exportcsv()" height="60em" style="float: right; cursor:pointer" class=" "> --}}
       <table class="table " id="mytable" border="3px solid black">
         <thead border="3px solid black" style="height: 51px;">
           <tr>
@@ -243,6 +252,7 @@
     }
 
   </script>
+
   <script src="Javascript/spending.js"></script>
   <script src="Javascript/editTransaction.js"></script>
 </body>

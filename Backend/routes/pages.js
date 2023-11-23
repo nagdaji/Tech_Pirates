@@ -80,6 +80,7 @@ router.get("/group", loggedin, (req, res) => {
     res.render("group", {
       username: req.user.fullname,
       email: req.user.email,
+      groupadmin: req.user.fullname,
     });
   } else {
     res.render("index");

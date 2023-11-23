@@ -108,3 +108,6 @@
 .member-email {
   width: 82%;
 }
+.pointer {
+  cursor: pointer;
+}

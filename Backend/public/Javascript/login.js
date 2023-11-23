@@ -27,6 +27,8 @@ form.addEventListener("submit", () => {
         success.style.display = "block";
         error.style.display = "none";
         successmsg.innerHTML = data.message;
+        window.location.href = "/";
+
         // console.log("success  in javascript register");
         // document.write("adfffdff");
       }

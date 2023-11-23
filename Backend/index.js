@@ -24,6 +24,22 @@ db.connect((err) => {
   console.log("connected");
 });
 
+// //////////// Watsapp Notification
+
+// const accountSid = process.env.ACCOUNT_SID;
+// const authToken = process.env.AUTH_TOKEN;
+// const client = require("twilio")(accountSid, authToken);
+
+// client.messages
+//   .create({
+//     body: "Your appointment is coming up on July 21 at 3PM",
+//     from: "whatsapp:+14155238886",
+//     to: "whatsapp:+917869789082",
+//   })
+//   .then((message) => console.log(message.sid));
+// // .done();
+
+// // ----- / messaging ------//
 
 app.use("/", require("./routes/pages"));
 

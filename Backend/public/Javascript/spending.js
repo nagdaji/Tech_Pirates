@@ -313,3 +313,23 @@ function filter9() {
   document.getElementById("filter9").style.background = "#003366";
   document.getElementById("filter9").style.color = "white";
 }
+
+function exportcsv() {
+  var table = document.getElementById("mytable");
+
+  const name = document.getElementById("username").innerHTML;
+  const filename = name + ".csv";
+  var rows = [];
+  for (var i = 0; i < table.rows.length; i++) {
+    var row = [];
+    for (var j = 0; j < table.rows[i].cells.length - 1; j++) {
+      row.push(table.rows[i].cells[j].innerText);
+    }
+    rows.push(row.join(","));
+  }
+
+  var csvData = rows.join("\n");
+
+  var blob = new Blob([csvData], { type: "text/csv;charset=utf-8" });
+  saveAs(blob, filename);
+}

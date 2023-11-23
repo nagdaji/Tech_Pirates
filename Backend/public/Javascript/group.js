@@ -32,22 +32,35 @@ addmember.addEventListener("submit", () => {
     email: document.getElementById("pagemail").innerHTML,
     code: document.getElementById("code").innerHTML,
   };
-  fetch("/dashboard/addmember", {
-    method: "POST",
-    body: JSON.stringify(add_entry),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      const success = document.getElementById("success2");
-      const successmsg = document.getElementById("successmsg2");
-      if (data.status == "success") {
-        success.style.display = "block";
-        successmsg.innerHTML = data.message;
-      }
-    });
+
+  let mememail = document.getElementById("email").value;
+  let email = document.getElementById("pagemail").innerHTML;
+  console.log(mememail);
+  console.log(email);
+  checkuser();
+  if (mememail != email) {
+    fetch("/dashboard/addmember", {
+      method: "POST",
+      body: JSON.stringify(add_entry),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        const success = document.getElementById("success2");
+        const successmsg = document.getElementById("successmsg2");
+        if (data.status == "success") {
+          success.style.display = "block";
+          successmsg.innerHTML = data.message;
+        }
+      });
+  } else {
+    const success = document.getElementById("success2");
+    const successmsg = document.getElementById("successmsg2");
+    success.style.display = "block";
+    successmsg.innerHTML = "Cannot Add this email";
+  }
 });
 
 //  ----------- verify User ------------
@@ -167,17 +180,15 @@ async function printgroups() {
                   <p class="remark">Created By - ${Created}</p>
                   <p class="remark"><i>No of Member - ${element2[0].count}</i></p>
                   <div class=" gap-2 mb-2">
-                     <button class="btn btn-color1" type="button" data-bs-toggle="modal" data-bs-target="#checkingModal">View Group</button>
+                     <button class="btn btn-color1" type="button" id data-bs-toggle="modal" data-bs-target="#checkingModal" onclick="showtransaction(${element[i].groupcode})">View Group</button>
                   </div>
-                  <a data-bs-toggle="modal" data-bs-target="#addModal" ><img src="/images/plus.png"
-                  height="35px" width="35px" onclick="addm(${element[i].groupcode})"></a>
+                  <a data-bs-toggle="modal" data-bs-target="#addModal" class="pointer" ><img src="/images/plus.png"
+                  height="35px" width="35px" onclick="addm2(${element[i].groupcode})"></a>
                   <!-- for edit -->
-                  <a data-bs-toggle="modal" data-bs-target="#editModal"><img src="/images/pen (1).png"
+                  <a data-bs-toggle="modal" data-bs-target="#editModal" class="pointer"><img src="/images/pen (1).png"
                   height="35px" width="35px" onclick="editg(${element[i].groupcode})"></a>
                   <!-- end of edit -->
-                  <a  data-bs-toggle="modal" data-bs-target="#viewModal"><img src="/images/user (1).png" height="35px" width = "35px" onclick="displaygmem(${element[i].groupcode})"></a>
-                  <a href=""><img src="/images/logout.png" height="35px" width = "35px" alt=""></a>
-                  <a><img src="/images/delete.png" height="35px" width="35px"></a>
+                  <a  data-bs-toggle="modal" data-bs-target="#viewModal" class="pointer"><img src="/images/user (1).png" height="35px" width = "35px" onclick="displaygmem(${element[i].groupcode})"></a>
                   </div>
                   </a>`;
           } else if (element[i].memberid != element[i].ownername) {
@@ -187,10 +198,9 @@ async function printgroups() {
                   <p class="remark">Created By - ${Created}</p>
                   <p class="remark"><i>No of Member - ${element2[0].count}</i></p>
                   <div class=" gap-2 mb-2">
-                     <button class="btn btn-color1" type="button" data-bs-toggle="modal" data-bs-target="#checkingModal">View Group</button>
+                     <button class="btn btn-color1" type="button" data-bs-toggle="modal" data-bs-target="#checkingModal" onclick="showtransaction(${element[i].groupcode})">View Group</button>
                   </div>                 
-                  <a data-bs-toggle="modal" data-bs-target="#viewModal"><img src="/images/user (1).png" height="35px" width = "35px" onclick="displaygmem(${element[i].groupcode})"></a>
-                  <a href=""><img src="/images/logout.png" height="35px" width = "35px" alt=""></a> 
+                  <a data-bs-toggle="modal" data-bs-target="#viewModal" class="pointer"><img src="/images/user (1).png" height="35px" width = "35px" onclick="displaygmem(${element[i].groupcode})"></a>
                   </div>
                   </a>`;
           }
@@ -200,18 +210,22 @@ async function printgroups() {
     });
 }
 
-function activate() {
-  document.getElementById("unit").toggleAttribute("disabled");
+function activate(mail) {
+  const id = "enable" + mail;
+  //   console.log(id);
+  document.getElementById(id).toggleAttribute("disabled");
 }
 
 // ------------ Add member Customization ----------
-function addm(code) {
+function addm2(code) {
   document.getElementById("code").innerHTML = code;
 }
 // ------xxxx------ Add member Customization -----xxx-----
 
 // ------------ Edit Member Customization ----------
 function editg(code) {
+  document.getElementById("code").innerHTML = code;
+
   const add_entry = {
     email: document.getElementById("pagemail").innerHTML,
     code: code,
@@ -238,10 +252,16 @@ function editg(code) {
         ans += `<div class="box">
           <div class="member-email">
           <label for="mememail" class="form-label ">Member E-mail</label>
-          <input type="email" class="form-control" value="${element[i].memberid}" disabled style="font-size:17px; font-weight:600;">
+          <input type="email" class="form-control" value="${
+            element[i].memberid
+          }" disabled style="font-size:17px; font-weight:600;" id="memdelid${
+          i + 1
+        }">
           </div>
           <div class="del-image">
-          <img src="/images/delete.png" height="35px" width="35px" alt="">
+          <img src="/images/delete.png" height="35px" width="35px" onclick="deletemember(${
+            i + 1
+          })">
           </div>
           
           </div>`;
@@ -296,3 +316,263 @@ function displaygmem(code) {
     });
 }
 // ------xxxx------ Display Member -----xxx-----
+
+// ------------- Delete Member ----------
+function deletemember(i) {
+  let id = "memdelid" + i;
+  const add_entry = {
+    email: document.getElementById(id).value,
+    code: document.getElementById("code").innerHTML,
+  };
+  fetch("/dashboard/deletegroupmember", {
+    method: "POST",
+    body: JSON.stringify(add_entry),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((res) => res.json())
+    .then(async (data) => {
+      const success = document.getElementById("success4");
+      const successmsg = document.getElementById("successmsg4");
+      if (data.status == "success") {
+        success.style.display = "block";
+        successmsg.innerHTML = data.message;
+      }
+    });
+}
+
+// -------xxx------ Delete Member ----xxxx------
+
+// --------------------- Add Group Entry -------------------
+async function showdetailingroupentry() {
+  const add_entry3 = {
+    code: document.getElementById("code").innerHTML,
+  };
+  let useremail = document.getElementById("pagemail").innerHTML;
+  await fetch("/dashboard/showeditmodal", {
+    method: "POST",
+    body: JSON.stringify(add_entry3),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    //read es .json
+    .then((res) => res.json())
+    .then(async (data4) => {
+      //   console.log(data4);
+      const data = [data4];
+      const length = data[0].result.length;
+      const element = data[0].result;
+
+      let ans = "";
+      for (let i = 0; i < length; i++) {
+        const add_entry = {
+          ownername: element[i].memberid,
+        };
+        await fetch("/dashboard/getcreatorname", {
+          method: "POST",
+          body: JSON.stringify(add_entry),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          //read es .json
+          .then((res) => res.json())
+          .then((data8) => {
+            const data5 = [data8];
+            const element5 = data5[0].results;
+
+            // console.log(element[i].memberid);
+            const uid = element[i].memberid;
+            ans += ` <div class="row my-4">
+                        <div class="col-md-6">
+                            
+                            <input type="checkbox" onclick="activate('${uid}')">
+                            <label class="">${element5[0].fullname}</label><br>
+                            <input type="text" class="Memberid" value="${element[i].memberid}" style="display:none;">
+                        </div>
+                        <div class="col-md-6">
+                            <input type="number" class="form-control Member" id="enable${element[i].memberid}" disabled required>
+                        </div>
+                    </div>`;
+          });
+        document.getElementById("entrylist").innerHTML = ans;
+      }
+    });
+}
+
+const addgroupentry = document.getElementById("addgroupentry");
+addgroupentry.addEventListener("submit", async () => {
+  const inputFields = document.querySelectorAll(".Member");
+  const Memberid = document.querySelectorAll(".Memberid");
+  const inputdate = document.querySelectorAll(".inputdate");
+  const values = [];
+  for (let i = 0; i < inputFields.length; i++) {
+    if (inputFields[i].value != "") {
+      const entry = {
+        mail: Memberid[i].value,
+        amount: inputFields[i].value,
+        inputdate: inputdate[0].value,
+      };
+      values.push(entry);
+    }
+  }
+  const length = values.length;
+  // console.log(values);
+  for (let i = 0; i < length; i++) {
+    const email = values[i].mail;
+    const amount = values[i].amount;
+    const date = values[i].inputdate;
+
+    const add_entry = {
+      mail: email,
+      amount: amount,
+      usermail: document.getElementById("pagemail").innerHTML,
+      groupcode: document.getElementById("code").innerHTML,
+      date: date,
+    };
+    console.log(add_entry);
+    await fetch("/dashboard/insertgrouptransaction", {
+      method: "POST",
+      body: JSON.stringify(add_entry),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      //read es .json
+      .then((res) => res.json())
+      .then(async (data) => {
+        const success = document.getElementById("success5");
+        const successmsg = document.getElementById("successmsg5");
+        if (data.status == "success") {
+          success.style.display = "block";
+          successmsg.innerHTML = data.message;
+        }
+      });
+  }
+});
+
+async function showtransaction(code) {
+  document.getElementById("code").innerHTML = code;
+  var mainname;
+  const output = document.getElementById("trasactionout");
+  const shareoutput = document.getElementById("shareoutput");
+  const mainuser = document.getElementById("pagemail").innerHTML;
+  // =========== find ownername ===========
+  const add_entry2 = {
+    ownername: mainuser,
+  };
+  //   console.log(element[i].groupname);
+  await fetch("/dashboard/getcreatorname", {
+    method: "POST",
+    body: JSON.stringify(add_entry2),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    //read es .json
+    .then((res) => res.json())
+    .then((data9) => {
+      const data8 = [data9];
+      mainname = data8[0].results;
+    });
+
+  const add_entry = {
+    email: document.getElementById("pagemail").innerHTML,
+    code: document.getElementById("code").innerHTML,
+  };
+  var element2;
+  var element4;
+  var ans = "";
+  var ans2 = "";
+  await fetch("/dashboard/Printgrouptransaction", {
+    method: "POST",
+    body: JSON.stringify(add_entry),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    //read es .json
+    .then((res) => res.json())
+    .then(async (data) => {
+      // console.log(data);
+      const data1 = [data];
+      const length = data1[0].results.length;
+      const element = data1[0].results;
+      console.log(element);
+      for (let i = 0; i < length; i++) {
+        // =========== find givername ===========
+        const add_entry2 = {
+          ownername: element[i].giver,
+        };
+        //   console.log(element[i].groupname);
+        await fetch("/dashboard/getcreatorname", {
+          method: "POST",
+          body: JSON.stringify(add_entry2),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          //read es .json
+          .then((res) => res.json())
+          .then((data2) => {
+            const data3 = [data2];
+            element2 = data3[0].results;
+            // console.log(element2);
+          });
+        // =========== find recievername ===========
+        const add_entry3 = {
+          ownername: element[i].reciever,
+        };
+        //   console.log(element[i].groupname);
+        await fetch("/dashboard/getcreatorname", {
+          method: "POST",
+          body: JSON.stringify(add_entry3),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          //read es .json
+          .then((res) => res.json())
+          .then((data3) => {
+            const data4 = [data3];
+            element4 = data4[0].results;
+            // console.log(element2);
+          });
+        var recievername = element4[0].fullname;
+        var givername = element2[0].fullname;
+        if (recievername == mainname[0].fullname) {
+          recievername = "You";
+        }
+        if (givername == mainname[0].fullname) {
+          givername = "You";
+        }
+        ans += `<div class="card w-75 mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Date : ${element[i].date}</h5>
+                        <p class="card-text"><b>Who Paid:</b>&emsp;<span>${recievername}</span></p>
+                        <p class="card-text"><b>For Whom:</b>&emsp;<span>${givername}</span></p>
+                        <p class="card-text" style="font-size:25px">
+                            <b>Amount:</b>&emsp;<span> &#8377; ${element[i].amount}</span>
+                        </p>
+                    </div>
+                </div>`;
+        ans2 += `<div class="container text-center my-2">
+        <div class="row">
+            <div class="col">
+                ${givername}
+            </div>
+            <div class="col">
+                ${recievername}
+            </div>
+            <div class="col">
+            &#8377; ${element[i].amount}
+            </div>
+        </div>
+    </div>`;
+      }
+      shareoutput.innerHTML = ans2;
+      output.innerHTML = ans;
+    });
+}
